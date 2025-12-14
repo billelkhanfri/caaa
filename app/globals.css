@@ -1,7 +1,25 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
-
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, corporate;
+}
 body {
   @apply font-sans text-gray-800 bg-white;
+}
+@layer utilities {
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
 }
