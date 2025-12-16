@@ -5,10 +5,11 @@ import { getSupabase } from "@/app/lib/supabase";
 import BenevolesDashboardLayout from "@/app/components/BenevolesDashboardLayout";
 
 export default function ActualitesPage() {
-  const supabase = getSupabase()
   const [actualites, setActualites] = useState([]);
 
   useEffect(() => {
+    const supabase = getSupabase(); // ✅ instanciation DANS useEffect
+
     supabase
       .from("actualites")
       .select("*")
