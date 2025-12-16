@@ -7,7 +7,7 @@ export default function ActualitesClient() {
   const [actualites, setActualites] = useState([]);
 
   useEffect(() => {
-    import("@/lib/supabase/server").then(({ createSupabaseServer }) => {
+    import("@app/lib/supabase/server.js").then(({ createSupabaseServer }) => {
       const supabase = createSupabaseServer();
       supabase
         .from("actualites")
