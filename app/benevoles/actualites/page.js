@@ -1,4 +1,4 @@
-import ActualitesClient from "./ActualitesClient";
+import ActualitesClient from "./ActualiteClient";
 
 export default function ActualitesPage() {
   return <ActualitesClient />;
