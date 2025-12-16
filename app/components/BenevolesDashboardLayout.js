@@ -6,7 +6,7 @@ import { getSupabase } from "@/app/lib/supabase";
 import Link from "next/link";
 
 export default function BenevolesDashboardLayout({ children }) {
-    const supabase = getSupabase()
+  const supabase = getSupabase();
   const router = useRouter();
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);

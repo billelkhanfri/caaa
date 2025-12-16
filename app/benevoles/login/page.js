@@ -1,18 +1,24 @@
-"use client";
+export const dynamic = "force-dynamic";
+("use client");
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { getSupabase} from "@/app/lib/supabase";
+import { getSupabase } from "@/app/lib/supabase";
 
 export default function BenevolesLogin() {
-  const supabase= getSupabase()
+  const supabase = getSupabase();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  if (!supabase) {
+    return <div>Configuration Supabase manquante</div>;
+  }
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    const { data, error } = await supabase.auth.signInWithPassword({
+
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -22,8 +28,7 @@ export default function BenevolesLogin() {
       return;
     }
 
-    alert("Connecté !");
-    router.push("/benevoles"); // redirection vers dashboard
+    router.push("/benevoles");
   };
 
   return (
@@ -35,6 +40,7 @@ export default function BenevolesLogin() {
         <h1 className="text-2xl font-bold text-center mb-4">
           Connexion Bénévole
         </h1>
+
         <input
           type="email"
           placeholder="Email"
@@ -43,6 +49,7 @@ export default function BenevolesLogin() {
           className="input input-bordered w-full"
           required
         />
+
         <input
           type="password"
           placeholder="Mot de passe"
@@ -51,6 +58,7 @@ export default function BenevolesLogin() {
           className="input input-bordered w-full"
           required
         />
+
         <button type="submit" className="btn btn-primary w-full">
           Se connecter
         </button>
