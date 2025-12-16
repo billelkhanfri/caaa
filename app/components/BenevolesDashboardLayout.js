@@ -1,0 +1,80 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { supabase } from "@/app/lib/supabase";
+import Link from "next/link";
+
+export default function BenevolesDashboardLayout({ children }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (!data?.session) router.push("/benevoles/login");
+      else setLoading(false);
+    };
+    checkSession();
+  }, [router]);
+
+  if (loading) return <p className="p-8">Chargement...</p>;
+
+  return (
+    <div className="min-h-screen flex bg-gray-100">
+      {/* SIDEBAR */}
+      <aside className="w-64 bg-secondary text-white">
+        <div className="p-6 text-2xl font-bold border-b border-gray-700">
+          Dashboard
+        </div>
+
+        <nav className="p-4 flex flex-col gap-2">
+          <Link
+            href="/benevoles"
+            className={`p-2 rounded ${
+              pathname === "/benevoles" ? "bg-primary" : "hover:bg-neutral"
+            }`}
+          >
+            Accueil
+          </Link>
+
+          <Link
+            href="/benevoles/posts"
+            className={`p-2 rounded ${
+              pathname === "/benevoles/posts"
+                ? "bg-primary"
+                : "hover:bg-neutral"
+            }`}
+          >
+            Articles
+          </Link>
+
+          <Link
+            href="/benevoles/actualites"
+            className={`p-2 rounded ${
+              pathname === "/benevoles/actualites"
+                ? "bg-primary"
+                : "hover:bg-neutral"
+            }`}
+          >
+            Actualités
+          </Link>
+        </nav>
+
+        <button
+          onClick={async () => {
+            await supabase.auth.signOut();
+            router.push("/benevoles/login");
+          }}
+          className="m-4 bg-accent hover:bg-red-600 p-2 rounded"
+        >
+          Déconnexion
+        </button>
+      </aside>
+
+      {/* CONTENU */}
+      <main className="flex-1 p-8">{children}</main>
+    </div>
+  );
+}

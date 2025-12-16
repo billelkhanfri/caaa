@@ -1,10 +1,9 @@
-// app/blog/[slug]/page.js
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-export default async function PostPage({ params }) {
-  // ✅ params = Promise (Next 15 / App Router)
-  const { slug } = await params;
+
+export default async function BlogPostPage({ params }) {
+  const { slug } = params; // pas de await
 
   if (!slug) notFound();
 
@@ -15,13 +14,19 @@ export default async function PostPage({ params }) {
 
   if (!res.ok) {
     if (res.status === 404) notFound();
-    throw new Error("Erreur lors du chargement de l’actualité");
+    throw new Error("Erreur lors du chargement de l’article");
   }
 
   const post = await res.json();
-
- 
   if (!post) return <div>Article introuvable</div>;
+
+  // Extraire le texte de content
+  const contentText =
+    post.content
+      ?.map(
+        (block) => block.children?.map((child) => child.text).join("") || ""
+      )
+      .join("\n\n") || "";
 
   return (
     <section className="py-20 px-6 lg:px-32">
@@ -31,15 +36,13 @@ export default async function PostPage({ params }) {
         </Link>
 
         <div className="relative h-72 md:h-96 rounded-3xl overflow-hidden mb-8">
-          { <Image
-            src={
-               "/logo.png"
-            }
-            alt={post.title}
+          <Image
+            src={post.main_image?.url || "/logo.png"}
+            alt={post.main_image?.alt || post.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-contain"/>}
-            
+            className="object-contain"
+          />
         </div>
 
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
@@ -50,7 +53,9 @@ export default async function PostPage({ params }) {
         </div>
 
         <div className="prose prose-lg max-w-none">
-          {post.content} 
+          {contentText.split("\n\n").map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </div>
       </div>
     </section>
