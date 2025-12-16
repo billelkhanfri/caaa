@@ -1,7 +1,8 @@
-import { supabase } from "@/app/lib/supabase";
+import { getSupabase } from "@/app/lib/supabase";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
+  const supabase = getSupabase(); // 👈 instanciation EXPLICITE ici
   try {
     const body = await req.json();
     const { slug, title, category, date, image, content } = body;

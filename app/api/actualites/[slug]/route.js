@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/app/lib/supabase";
+import { getSupabase } from "@/app/lib/supabase";
 
 export async function GET(req, context) {
+  const supabase = getSupabase(); // 👈 instanciation EXPLICITE ici
   // context.params est une Promise dans Next.js App Router
   const params = await context.params;
   const slug = params.slug;

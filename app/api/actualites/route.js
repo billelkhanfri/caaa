@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/app/lib/supabase";
+import { getSupabase } from "@/app/lib/supabase";
 
 export async function GET(req) {
+  const supabase = getSupabase(); // 👈 instanciation EXPLICITE ici
+
   const { searchParams } = new URL(req.url);
   const category = searchParams.get("category");
 
@@ -10,12 +12,11 @@ export async function GET(req) {
     .select("*")
     .order("date", { descending: true });
 
-  if (category) query = query.eq("category", category);
+  if (category) {
+    query = query.eq("category", category);
+  }
 
   const { data, error } = await query;
 
-  if (error)
-    return NextResponse.json({ error: error.message }, { status: 500 });
-
-  return NextResponse.json(data);
-}
+  if (error) {
+    return Nex

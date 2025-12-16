@@ -1,8 +1,10 @@
 // app/api/posts/create.js
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/app/lib/supabase";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
+  const supabase = getSupabase(); // 👈 instanciation EXPLICITE ici
+
   try {
     const body = await req.json();
     const { title, slug, excerpt, content, author, main_image, published_at } =
