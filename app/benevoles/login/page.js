@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/app/lib/supabase";
+import { getSupabase} from "@/app/lib/supabase";
 
 export default function BenevolesLogin() {
+  const supabase= getSupabase()
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

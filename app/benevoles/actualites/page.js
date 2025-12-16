@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/app/lib/supabase";
+import { getSupabase } from "@/app/lib/supabase";
 import BenevolesDashboardLayout from "@/app/components/BenevolesDashboardLayout";
 
 export default function ActualitesPage() {
+  const supabase = getSupabase()
   const [actualites, setActualites] = useState([]);
 
   useEffect(() => {
