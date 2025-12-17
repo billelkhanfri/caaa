@@ -1,5 +1,5 @@
 import { createSupabaseServer } from "../lib/supabase/server";
-import BlogList from "../components/BlogList";
+import BlogList from "../components/ALBlogs";
 
 export default async function PostsData() {
   const supabase = await createSupabaseServer();
