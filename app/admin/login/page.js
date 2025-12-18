@@ -29,7 +29,7 @@ export default function BenevolesLogin() {
       return;
     }
 
-    router.push("/benevoles");
+    router.push("/admin");
   };
 
   return (
@@ -49,9 +49,7 @@ export default function BenevolesLogin() {
           space-y-6
         "
       >
-        <h1 className="text-2xl md:text-3xl font-bold text-center">
-          Connexion Bénévole
-        </h1>
+        <h1 className="text-xl font-bold text-center">Admin CAAA</h1>
 
         <input
           type="email"

@@ -1,0 +1,59 @@
+"use client";
+
+export default function ActualiteForm({ initialData = {}, action }) {
+  return (
+    <form action={action} className="card bg-base-100 shadow p-6 space-y-4">
+      <h2 className="text-xl font-bold">Actualité</h2>
+
+      {/* TITRE */}
+      <input
+        name="title"
+        className="input input-bordered w-full"
+        placeholder="Titre"
+        defaultValue={initialData.title || ""}
+        required
+      />
+
+      {/* CATÉGORIE */}
+      <input
+        name="category"
+        className="input input-bordered w-full"
+        placeholder="Catégorie"
+        defaultValue={initialData.category || ""}
+        required
+      />
+
+      {/* DATE */}
+      <input
+        type="date"
+        name="date"
+        className="input input-bordered w-full"
+        defaultValue={
+          initialData.date
+            ? new Date(initialData.date).toISOString().split("T")[0]
+            : ""
+        }
+      />
+
+      {/* IMAGE */}
+      <input
+        name="imageUrl"
+        className="input input-bordered w-full"
+        placeholder="URL de l'image"
+        defaultValue={initialData.image?.url || ""}
+      />
+
+      {/* CONTENU */}
+      <textarea
+        name="content"
+        className="textarea textarea-bordered w-full min-h-[150px]"
+        placeholder="Contenu"
+        defaultValue={initialData.content || ""}
+      />
+
+      <button type="submit" className="btn btn-primary w-full">
+        Enregistrer
+      </button>
+    </form>
+  );
+}

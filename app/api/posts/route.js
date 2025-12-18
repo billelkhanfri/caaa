@@ -1,24 +1,20 @@
-import { NextResponse } from "next/server";
-import { createSupabaseServer } from "../../lib/supabase/server";
+import { supabaseClient } from "../../lib/supabase/client";
 
-export async function GET(req) {
-  const supabase = createSupabaseServer(); // ✅ serveur only
+export async function POST(req) {
+  const supabase = supabaseClient();
+  const body = await req.json();
+  const { data, error } = await supabase.from("posts").insert([
+    {
+      ...body,
+      author: "CAAA",
+      slug: body.title.toLowerCase().replace(/\s+/g, "-"),
+      published_at: new Date().toISOString(),
+    },
+  ]);
 
-  const { searchParams } = new URL(req.url);
-  const slug = searchParams.get("slug");
-
-  let query = supabase.from("posts").select("*");
-
-  if (slug) {
-    query = query.eq("slug", slug); // filtre seulement, mais ne limite pas
-  }
-
-  const { data, error } = await query;
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
-  // Toujours renvoyer le tableau complet, même si un slug correspond
-  return NextResponse.json(data);
+  if (error)
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 400,
+    });
+  return new Response(JSON.stringify({ data }), { status: 200 });
 }

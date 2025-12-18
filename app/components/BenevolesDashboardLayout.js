@@ -14,7 +14,7 @@ export default function BenevolesDashboardLayout({ children }) {
   useEffect(() => {
     const checkSession = async () => {
       const { data } = await supabase.auth.getSession();
-      if (!data?.session) router.push("/benevoles/login");
+      if (!data?.session) router.push("/admin/login");
       else setLoading(false);
     };
     checkSession();
@@ -23,8 +23,7 @@ export default function BenevolesDashboardLayout({ children }) {
   if (loading) return <p className="p-8">Chargement...</p>;
 
   return (
-    <div className="min-h-screen flex bg-gray-100">
-      {/* SIDEBAR */}
+    <>
       <aside className="w-64 bg-secondary text-white">
         <div className="p-6 text-2xl font-bold border-b border-gray-700">
           Dashboard
@@ -32,29 +31,27 @@ export default function BenevolesDashboardLayout({ children }) {
 
         <nav className="p-4 flex flex-col gap-2">
           <Link
-            href="/benevoles"
+            href="/admin"
             className={`p-2 rounded ${
-              pathname === "/benevoles" ? "bg-primary" : "hover:bg-neutral"
+              pathname === "/admin" ? "bg-primary" : "hover:bg-neutral"
             }`}
           >
             Accueil
           </Link>
 
           <Link
-            href="/benevoles/posts"
+            href="/admin/posts"
             className={`p-2 rounded ${
-              pathname === "/benevoles/posts"
-                ? "bg-primary"
-                : "hover:bg-neutral"
+              pathname === "/admin/posts" ? "bg-primary" : "hover:bg-neutral"
             }`}
           >
             Articles
           </Link>
 
           <Link
-            href="/benevoles/actualites"
+            href="/admin/actualites"
             className={`p-2 rounded ${
-              pathname === "/benevoles/actualites"
+              pathname === "/admin/actualites"
                 ? "bg-primary"
                 : "hover:bg-neutral"
             }`}
@@ -66,7 +63,7 @@ export default function BenevolesDashboardLayout({ children }) {
         <button
           onClick={async () => {
             await supabase.auth.signOut();
-            router.push("/benevoles/login");
+            router.push("/admin/login");
           }}
           className="m-4 bg-accent hover:bg-red-600 p-2 rounded"
         >
@@ -74,8 +71,20 @@ export default function BenevolesDashboardLayout({ children }) {
         </button>
       </aside>
 
-      {/* CONTENU */}
-      <main className="flex-1 p-8">{children}</main>
-    </div>
+     
+      
+    </>
   );
 }
+
+
+
+
+    <aside className="w-64 bg-base-100 shadow">
+      <ul className="menu p-4">
+        <li><Link href="/admin">Dashboard</Link></li>
+        <li><Link href="/admin/posts">Posts</Link></li>
+        <li><Link href="/admin/actualites">Actualités</Link></li>
+      </ul>
+    </aside>
+

@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Blog", to: "/blog" },
   { label: "Partenaires", to: "/partenaires" },
   { label: "Les talents", to: "/talents" },
-  { label: "Espace bénévoles", to: "/benevoles" },
+  { label: "Espace bénévoles", to: "/admin" },
 ];
 
 export default function Navbar() {
