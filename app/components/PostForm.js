@@ -2,7 +2,11 @@
 
 export default function PostForm({ initialData = {}, action }) {
   return (
-    <form action={action} className="card bg-base-100 shadow p-6 space-y-4">
+    <form
+      action={action}
+      className="card bg-base-100 shadow p-6 space-y-4"
+
+    >
       <h2 className="text-xl font-bold">Article</h2>
 
       <input
@@ -13,11 +17,12 @@ export default function PostForm({ initialData = {}, action }) {
         required
       />
 
+      {/* ✅ File input instead of URL */}
       <input
-        name="imageUrl"
-        className="input input-bordered w-full"
-        placeholder="URL de l'image"
-        defaultValue={initialData.main_image?.url || ""}
+        type="file"
+        name="image"
+        accept="image/*,video/*"
+        className="file-input file-input-bordered w-full"
       />
 
       <textarea

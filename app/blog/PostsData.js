@@ -6,6 +6,7 @@ export default async function PostsData() {
 
   const { data: posts, error } = await supabase.from("posts").select();
 
+
   if (error) {
     return <div>Erreur chargement posts</div>;
   }

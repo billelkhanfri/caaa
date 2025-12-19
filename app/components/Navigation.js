@@ -3,17 +3,36 @@
 import Link from "next/link";
 import Image from "next/image";
 import { HeartHandshake } from "lucide-react";
+import { useEffect, useState } from "react";
 
-const navLinks = [
-  { label: "Accueil", to: "/" },
-  { label: "Activités", to: "/activities" },
-  { label: "Blog", to: "/blog" },
-  { label: "Partenaires", to: "/partenaires" },
-  { label: "Les talents", to: "/talents" },
-  { label: "Espace bénévoles", to: "/login" },
-];
+import { supabaseClient } from "../lib/supabase/client";
+
+
 
 export default function Navbar() {
+  const supabase = supabaseClient;
+  const [isLogged, setIsLogged] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      setIsLogged(!!data.session);
+      setLoading(false);
+    };
+    checkSession();
+  }, []);
+  if (loading) return null; // évite le clignotement
+
+  const navLinks = [
+    { label: "Accueil", to: "/" },
+    { label: "Activités", to: "/activities" },
+    { label: "Blog", to: "/blog" },
+    { label: "Partenaires", to: "/partenaires" },
+    { label: "Les talents", to: "/talents" },
+    { label: "Espace bénévoles", to: isLogged ? "/admin" : "/login" },
+  ];
+
   return (
     <header className="navbar bg-base-100 shadow-sm px-4">
       {/* LEFT : Logo + Menu Mobile */}

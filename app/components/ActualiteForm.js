@@ -35,12 +35,12 @@ export default function ActualiteForm({ initialData = {}, action }) {
         }
       />
 
-      {/* IMAGE */}
+      {/* ✅ File input instead of URL */}
       <input
-        name="imageUrl"
-        className="input input-bordered w-full"
-        placeholder="URL de l'image"
-        defaultValue={initialData.image?.url || ""}
+        type="file"
+        name="image"
+        accept="image/*,video/*"
+        className="file-input file-input-bordered w-full"
       />
 
       {/* CONTENU */}

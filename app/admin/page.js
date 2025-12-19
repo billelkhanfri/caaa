@@ -4,7 +4,7 @@ export default function BenevolesHomePage() {
       <h1 className="text-3xl font-bold mb-4">Bienvenue 👋</h1>
 
       <p className="mb-6">
-        Vous êtes connecté à l’espace admon. Utilisez le menu à gauche pour
+        Vous êtes connecté à l’espace admin. Utilisez le menu à gauche pour
         gérer les contenus.
       </p>
 
