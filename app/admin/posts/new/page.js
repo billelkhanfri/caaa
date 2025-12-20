@@ -1,71 +1,82 @@
-import PostForm from "../../../components/PostForm"
-import { createSupabaseServer } from "../../../lib/supabase/server"
-import { redirect } from "next/navigation"
+import PostForm from "../../../components/PostForm";
+import { createSupabaseServer } from "../../../lib/supabase/server";
+import { redirect } from "next/navigation";
 
 export default function NewPostPage() {
-  async function createPost( formData) {
-    "use server"
+  async function createPost(formData) {
+    "use server";
 
-    const supabase = createSupabaseServer()
+    const supabase = createSupabaseServer();
 
-    const title = formData.get("title") 
-    const file = formData.get("image") 
+    // 🔹 Récupération sécurisée des champs
+    const title = formData.get("title")?.toString().trim();
+    const excerpt = formData.get("excerpt")?.toString().trim() || null;
+    const content = formData.get("content")?.toString().trim() || null;
+    const file = formData.get("image");
 
+    if (!title) {
+      throw new Error("Le titre est obligatoire");
+    }
+
+    // 🔹 Slug propre
     const slug = title
       .toLowerCase()
-      .trim()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-")
+      .trim()
+      .replace(/\s+/g, "-");
 
-    let imageUrl= null
+    let mainImage = null;
 
-    // ✅ Upload image if provided
+    // 🔹 Upload média (image OU vidéo)
     if (file && file.size > 0) {
-      const ext = file.name.split(".").pop()
-      const fileName = `${slug}-${crypto.randomUUID()}.${ext}`
-      const filePath = `posts/${fileName}`
+      const extension = file.name.split(".").pop();
+      const fileName = `${slug}-${crypto.randomUUID()}.${extension}`;
+      const filePath = `posts/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
         .from("media")
         .upload(filePath, file, {
           contentType: file.type,
           upsert: false,
-        })
+        });
 
       if (uploadError) {
-        throw new Error(uploadError.message)
+        throw new Error(uploadError.message);
       }
 
-      const { data } = supabase.storage
-        .from("media")
-        .getPublicUrl(filePath)
+      const { data } = supabase.storage.from("media").getPublicUrl(filePath);
 
-      imageUrl = data.publicUrl
+      // 🔹 Détection type média
+      const isVideo = file.type.startsWith("video");
+
+      mainImage = {
+        url: data.publicUrl,
+        alt: title,
+        type: isVideo ? "video" : "image",
+      };
     }
 
+    // 🔹 Insertion sécurisée
     const { error } = await supabase.from("posts").insert({
       title,
       slug,
-      excerpt: formData.get("excerpt"),
-      content: formData.get("content"),
-      main_image: imageUrl
-        ? {
-            alt: title,
-            url: imageUrl,
-          }
-        : null,
-    })
+      excerpt,
+      content,
+      main_image: mainImage,
+    });
 
     if (error) {
-      throw new Error(error.message)
+      throw new Error(error.message);
     }
 
-    redirect("/admin/posts")
+    redirect("/admin/posts");
   }
 
   return (
     <div className="max-w-3xl mx-auto p-6">
       <PostForm action={createPost} />
     </div>
-  )
+  );
 }
