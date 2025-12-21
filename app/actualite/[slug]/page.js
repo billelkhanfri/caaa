@@ -34,7 +34,7 @@ export default async function ActualitePage({ params }) {
   // 🖼️ image sécurisée (Supabase JSON)
   const imageUrl = actualite.image?.url || "/logo.png";
   const imageAlt = actualite.image?.alt || actualite.title;
-
+console.log(actualite)
   return (
     <section className="bg-base-100">
       <div className="max-w-3xl mx-auto px-6 py-20">

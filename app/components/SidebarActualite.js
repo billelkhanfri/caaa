@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 export default function SidebarActualite({ actualites }) {
+  console.log(actualites)
   return (
-    <div className="card bg-base-200 shadow-md sticky ">
+    <div className="card bg-[#F6F6B8] h-full shadow-md sticky ">
       <div className="card-body p-5">
         <h3 className="text-xl font-bold">Actualités</h3>
         <div className="divider my-2" />

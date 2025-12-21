@@ -10,8 +10,12 @@ export default function LayoutClient({ children, actualites }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-const hideSidebarPaths = ["/admin", "/login"];
-  const showSidebar = !hideSidebarPaths.includes(pathname);
+  // 🔥 Paths où la sidebar est cachée
+  const hideSidebarPaths = ["/admin", "/login"];
+
+  const showSidebar = !hideSidebarPaths.some((path) =>
+    pathname.startsWith(path)
+  );
 
   return (
     <>
@@ -21,7 +25,7 @@ const hideSidebarPaths = ["/admin", "/login"];
           onClick={() => setOpen(true)}
           className="lg:hidden fixed top-20 left-0 z-50 bg-warning text-primary p-3 rounded-r-xl shadow-lg"
         >
-          <IoChevronForward  size={22} />
+          <IoChevronForward size={22} />
         </button>
       )}
 
@@ -34,7 +38,7 @@ const hideSidebarPaths = ["/admin", "/login"];
         )}
 
         {/* CONTENU */}
-        <section className="flex-1 p-4">{children}</section>
+        <section className="flex-1">{children}</section>
       </main>
 
       {/* SIDEBAR MOBILE (DRAWER) */}
@@ -53,7 +57,7 @@ const hideSidebarPaths = ["/admin", "/login"];
             className={`fixed top-0 left-0 h-full w-64 bg-white z-50 transform transition-transform duration-300
             ${open ? "translate-x-0" : "-translate-x-full"}`}
           >
-            <div className="  p-4 border-b">
+            <div className="p-4 border-b">
               <button onClick={() => setOpen(false)}>
                 <CgClose size={20} />
               </button>
