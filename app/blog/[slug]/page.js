@@ -15,7 +15,7 @@ export default async function PostPage({ params }) {
 
   if (!res.ok) {
     if (res.status === 404) notFound();
-    throw new Error("Erreur lors du chargement de l’actualité");
+    throw new Error("Erreur lors du chargement de posts");
   }
 
   const post = await res.json();

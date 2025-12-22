@@ -55,7 +55,7 @@ function MissionCard({ title, text, img, newLabel }) {
 
 export default function Missions() {
   return (
-    <section className="py-16 bg-base-200">
+    <section className="py-16 bg-gray-50">
       <h2 className="text-4xl font-bold text-center mb-12">Nos Missions</h2>
 
       {/* ⭐ Responsive container */}

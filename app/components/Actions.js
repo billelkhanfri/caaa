@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function Actions() {
   const [flippedIndex, setFlippedIndex] = useState(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true); // on ne rend le flip qu'après le montage
+  }, []);
 
   const actions = [
     {
@@ -25,12 +30,11 @@ export default function Actions() {
   ];
 
   return (
-    <section className="py-16 px-6 lg:px-32 bg-gray-100">
+    <section className="py-16 px-6 lg:px-32 bg-white">
       <h2 className="text-4xl font-bold text-center mb-16">Nos Actions</h2>
 
-      <div className="grid gap-12 max-w-6xl mx-auto md:grid-cols-[4fr_auto_4fr] items-center">
+      <div className="grid gap-6 max-w-7xl mx-auto md:grid-cols-[4fr_auto_4fr] items-center">
         {actions.map((action, index) => {
-          /* IMAGE CENTRALE */
           if (index === 1) {
             return (
               <div
@@ -40,16 +44,16 @@ export default function Actions() {
                 <Image
                   src={action.image}
                   alt="Illustration"
-                  width={120}
-                  height={100}
+                  width={80}
+                  height={60}
                   className="rounded-3xl object-cover"
                 />
               </div>
             );
           }
 
-          /* FLIP CARD */
-          const isFlipped = flippedIndex === index;
+          // On ne calcule la rotation que si le composant est monté côté client
+          const isFlipped = mounted && flippedIndex === index;
 
           return (
             <div
@@ -57,8 +61,7 @@ export default function Actions() {
               className="perspective w-full max-w-sm md:max-w-md mx-auto aspect-[4/3]"
             >
               <div
-                className="relative h-full transition-transform duration-700 preserve-3d
-                           md:hover:rotate-y-180 cursor-pointer"
+                className="relative h-full transition-transform duration-700 preserve-3d cursor-pointer"
                 onClick={() => setFlippedIndex(isFlipped ? null : index)}
                 style={{
                   transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
@@ -71,7 +74,8 @@ export default function Actions() {
                       <Image
                         src={action.image}
                         alt={action.title}
-                        fill
+                      width={600}
+                      height={600}
                         className="object-cover"
                       />
                     </figure>

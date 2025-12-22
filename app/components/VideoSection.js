@@ -2,7 +2,7 @@ import React from "react";
 
 function VideoSection() {
   return (
-    <section id="video-section" className="py-16 px-6 lg:px-32 bg-base-200">
+    <section id="video-section" className="py-16 px-6 lg:px-32 bg-white">
       <h2 className="text-3xl font-bold text-center mb-8">
         Découvrez notre association
       </h2>

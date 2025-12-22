@@ -30,7 +30,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/lib/supabase/client.js", "app/lib/supabase/server.js", "app/lib/supabase/proxy.js"  ],
   "exclude": [
     "node_modules"
   ]

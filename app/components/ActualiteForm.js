@@ -1,6 +1,11 @@
 "use client";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { actualiteSchema } from "./actualiteSchema";
 
 export default function ActualiteForm({ initialData = {}, action }) {
+  const today = new Date().toISOString().split("T")[0];
+
   return (
     <form action={action} className="card bg-base-100 shadow p-6 space-y-4">
       <h2 className="text-xl font-bold">Actualité</h2>
@@ -31,11 +36,11 @@ export default function ActualiteForm({ initialData = {}, action }) {
         defaultValue={
           initialData.date
             ? new Date(initialData.date).toISOString().split("T")[0]
-            : ""
+            : today
         }
       />
 
-      {/* FILE input pour image ou vidéo */}
+      {/* IMAGE / VIDÉO */}
       <input
         type="file"
         name="image"
@@ -49,6 +54,7 @@ export default function ActualiteForm({ initialData = {}, action }) {
         className="textarea textarea-bordered w-full min-h-[150px]"
         placeholder="Contenu"
         defaultValue={initialData.content || ""}
+        required
       />
 
       <button type="submit" className="btn btn-primary w-full">

@@ -4,7 +4,7 @@ import Image from "next/image.js";
 
 function History() {
   return (
-    <section className="py-16 px-6 lg:px-32 bg-base-100">
+    <section className="py-16 px-6 lg:px-32 bg-white">
       <h2 className="text-4xl font-bold text-center mb-12">Notre Histoire</h2>
 
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">

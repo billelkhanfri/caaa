@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function SidebarActualite({ actualites }) {
-  console.log(actualites)
+
   return (
     <div className="card bg-[#F6F6B8] h-full shadow-md sticky ">
       <div className="card-body p-5">

@@ -100,60 +100,85 @@ export default async function EditPostPage({ params }) {
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       {/* FORM UPDATE */}
-      <form action={updatePost} className="space-y-4">
+      <form action={updatePost} className="space-y-5">
         <h1 className="text-2xl font-bold">Modifier l’article</h1>
 
-        {/* Titre */}
-        <input
-          name="title"
-          defaultValue={post.title}
-          className="input input-bordered w-full"
-          required
-        />
+        {/* TITRE */}
+        <div className="space-y-1">
+          <label htmlFor="title" className="font-medium">
+            Titre <span className="text-error">*</span>
+          </label>
+          <input
+            id="title"
+            name="title"
+            defaultValue={post.title}
+            placeholder="Ex : Inauguration du centre culturel"
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
 
-        {/* Extrait */}
-        <textarea
-          name="excerpt"
-          defaultValue={post.excerpt || ""}
-          className="textarea textarea-bordered w-full"
-          rows={3}
-        />
-
-        {/* Contenu */}
-        <textarea
-          name="content"
-          defaultValue={post.content || ""}
-          className="textarea textarea-bordered w-full"
-          rows={8}
-        />
-
-        {/* Média actuel */}
+        {/* EXTRAIT */}
+        <div className="space-y-1">
+          <label htmlFor="excerpt" className="font-medium">
+            Extrait
+          </label>
+          <textarea
+            id="excerpt"
+            name="excerpt"
+            defaultValue={post.excerpt || ""}
+            placeholder="Résumé court de l’article (optionnel)"
+            className="textarea textarea-bordered w-full"
+            rows={3}
+          />
+        </div>
+        {/* MÉDIA ACTUEL */}
         {post.main_image?.url && (
           <div className="text-sm text-gray-500">
-            Média actuel :
-            <a href={post.main_image.url} target="_blank" className="link ml-2">
+            <span className="font-medium">Média actuel :</span>
+            <a
+              href={post.main_image.url}
+              target="_blank"
+              className="link ml-2"
+              rel="noreferrer"
+            >
               Voir
             </a>
           </div>
         )}
 
-        {/* Upload nouveau média */}
-        <input
-          type="file"
-          name="media"
-          accept="image/*,video/*"
-          className="file-input file-input-bordered w-full"
-        />
+        {/* NOUVEAU MÉDIA */}
+        <div className="space-y-1">
+          <label htmlFor="media" className="font-medium">
+            Image ou vidéo
+          </label>
+          <input
+            id="media"
+            type="file"
+            name="media"
+            accept="image/*,video/*"
+            className="file-input file-input-bordered w-full"
+          />
+        </div>
+
+        {/* CONTENU */}
+        <div className="space-y-1">
+          <label htmlFor="content" className="font-medium">
+            Contenu <span className="text-error">*</span>
+          </label>
+          <textarea
+            id="content"
+            name="content"
+            defaultValue={post.content || ""}
+            placeholder="Rédige ici le contenu complet de l’article…"
+            className="textarea textarea-bordered w-full"
+            rows={8}
+            required
+          />
+        </div>
 
         <button className="btn btn-primary w-full">
           Enregistrer les modifications
-        </button>
-      </form>
-
-      {/* DELETE */}
-      <form action={deletePost}>
-        <button className="btn btn-error w-full">
-          Supprimer définitivement
         </button>
       </form>
     </div>

@@ -6,7 +6,7 @@ import { supabaseClient } from "../lib/supabase/client";
 import Link from "next/link";
 
 export default function BenevolesDashboardLayout({ children }) {
-  const supabase = supabaseClient;
+  const supabase = supabaseClient();
   const router = useRouter();
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
@@ -14,6 +14,7 @@ export default function BenevolesDashboardLayout({ children }) {
   useEffect(() => {
     const checkSession = async () => {
       const { data } = await supabase.auth.getSession();
+      console.log((data))
       if (!data?.session) router.push("/admin/login");
       else setLoading(false);
     };

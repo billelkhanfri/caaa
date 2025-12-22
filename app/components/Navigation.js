@@ -4,13 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { HeartHandshake } from "lucide-react";
 import { useEffect, useState } from "react";
-import { RiHome8Line } from "react-icons/ri";
 import { CiMenuKebab } from "react-icons/ci";
 
 import { supabaseClient } from "../lib/supabase/client";
 
 export default function Navbar() {
-  const supabase = supabaseClient;
+  const supabase = supabaseClient();
   const [isLogged, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(true);
 
