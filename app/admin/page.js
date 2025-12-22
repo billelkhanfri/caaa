@@ -1,16 +1,54 @@
-import { createSupabaseServer } from "../lib/supabase/server";
 
-export default async function BenevolesHomePage() {
- const supabase = createSupabaseServer();
- 
-const {
-  data: { user },
-} = await supabase.auth.getUser();
+"use client";
+import { supabaseClient } from "../lib/supabase/client";
+import { useEffect, useState } from "react";
+
+export default  function BenevolesHomePage() {
+
+   const supabase = supabaseClient();
+  const [loading, setLoading] = useState(true);
+  const [userName, setUserName] = useState("");
+
+useEffect(() => {
+  const fetchUserProfile = async () => {
+    const { data: sessionData } = await supabase.auth.getSession();
+
+    if (!sessionData?.session) {
+      router.push("/admin/login");
+      return;
+    }
+
+    const userId = sessionData.session.user.id;
+
+    const { data: profile, error } = await supabase
+      .from("profiles")
+      .select("first_name")
+      .eq("id", userId)
+      .maybeSingle();
+
+    if (error) console.error("Error fetching profile:", error);
+    setUserName(profile?.first_name || "Utilisateur");
+
+    if (error) {
+      console.error("Error fetching profile:", error);
+    } else if (profile) {
+      setUserName(profile.first_name); // vérifie que profile existe
+    }
+
+    setLoading(false);
+  };
+
+  fetchUserProfile();
+}, []);
+
+if (loading) return <p className="p-8">Chargement...</p>;
 
 
   return (
     <>
-      <h1 className="text-3xl font-bold mb-4">Bienvenue 👋</h1>
+      <h1 className="text-3xl font-bold mb-4">
+        Bienvenue <span className="text-primary">{userName || "Utilisateur"} 👋 </span>
+      </h1>
 
       <p className="mb-6">
         Vous êtes connecté à l’espace admin. Utilisez le menu à gauche pour
