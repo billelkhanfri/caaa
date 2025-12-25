@@ -10,15 +10,16 @@ export default async function Home() {
 
   return (
     <main>
-      {" "}
-      <Hero></Hero>
+  
+
+    
       {/* Notre histoire */}
       <History></History>
       <Missions></Missions>
       <Actions></Actions>
       {/* Adhérents & bénévoles */}
       <Benevole></Benevole>
-      <VideoSection></VideoSection>
+     
     </main>
   );
 }

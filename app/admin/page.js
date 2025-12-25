@@ -3,6 +3,7 @@
 import { supabaseClient } from "../lib/supabase/client";
 import { useEffect, useState } from "react";
 import ResetPassword from "../components/ResetPassword"
+import UploadVideo from "../components/UploadVideo";
 export default  function BenevolesHomePage() {
 
    const supabase =  supabaseClient();
@@ -82,6 +83,7 @@ if (loading) return <p className="p-8">Chargement...</p>;
             <ResetPassword />
           </div>
         </div>
+       
       </div>
     </>
   );

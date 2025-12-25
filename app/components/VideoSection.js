@@ -9,7 +9,7 @@ function VideoSection() {
       <div className="w-full max-w-4xl mx-auto aspect-video">
         <iframe
           className="w-full h-full rounded-lg shadow-lg"
-          src="https://www.youtube.com/embed/eNXCGCfYcVY"
+          src="https://avoxnypnpmblaitcgplp.supabase.co/storage/v1/object/public/video/dcc3502b-dba3-4f2f-804f-48a6d53bb000.MP4"
           title="Présentation CAAA"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
