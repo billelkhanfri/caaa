@@ -112,7 +112,7 @@ export default async function EditPostPage({ params }) {
           defaultValue={post.excerpt || ""}
           className="textarea textarea-bordered w-full"
           rows={3}
-        />
+        /> 
         <textarea
           name="content"
           defaultValue={post.content || ""}

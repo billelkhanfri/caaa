@@ -6,7 +6,7 @@ import Sidebar from "./SidebarActualite";
 import { IoChevronForward } from "react-icons/io5";
 import { CgClose } from "react-icons/cg";
 
-export default function LayoutClient({ children, actualites }) {
+export default function LayoutClient({ children, events }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -33,7 +33,7 @@ export default function LayoutClient({ children, actualites }) {
         {/* SIDEBAR DESKTOP */}
         {showSidebar && (
           <aside className="hidden lg:block w-64 border-r border-gray-200">
-            <Sidebar actualites={actualites} />
+            <Sidebar actualites={events} />
           </aside>
         )}
 
@@ -63,7 +63,7 @@ export default function LayoutClient({ children, actualites }) {
               </button>
             </div>
 
-            <Sidebar actualites={actualites} />
+            <Sidebar events={events} />
           </aside>
         </>
       )}
