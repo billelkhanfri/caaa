@@ -1,21 +1,25 @@
-
 "use client";
+
 import { supabaseClient } from "../lib/supabase/client";
 import { useEffect, useState } from "react";
-import ResetPassword from "../components/ResetPassword"
-import UploadVideo from "../components/UploadVideo";
-export default  function BenevolesHomePage() {
+import ResetPassword from "../components/ResetPassword";
 
-   const supabase =  supabaseClient();
+export default function BenevolesHomePage() {
+  const supabase = supabaseClient();
+
   const [loading, setLoading] = useState(true);
-  const [userName, setUserName] = useState("");
+  const [updating, setUpdating] = useState(false);
 
-useEffect(() => {
+  const [userName, setUserName] = useState(""); // pour affichage "Bienvenue"
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
   const fetchUserProfile = async () => {
     const { data: sessionData } = await supabase.auth.getSession();
 
     if (!sessionData?.session) {
-      router.push("/admin/login");
+      // redirection si pas connecté
+      window.location.href = "/admin/login";
       return;
     }
 
@@ -23,27 +27,52 @@ useEffect(() => {
 
     const { data: profile, error } = await supabase
       .from("profiles")
-      .select("first_name")
+      .select("first_name, last_name")
       .eq("id", userId)
       .maybeSingle();
 
-    if (error) console.error("Error fetching profile:", error);
-    setUserName(profile?.first_name || "Utilisateur");
+    if (error) console.error("Erreur fetch profil :", error);
 
-    if (error) {
-      console.error("Error fetching profile:", error);
-    } else if (profile) {
-      setUserName(profile.first_name); // vérifie que profile existe
-    }
+    setFirstName(profile?.first_name || "");
+    setLastName(profile?.last_name || "");
+    setUserName(profile?.first_name || "Utilisateur");
 
     setLoading(false);
   };
 
-  fetchUserProfile();
-}, []);
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
 
-if (loading) return <p className="p-8">Chargement...</p>;
+  const handleUpdateProfile = async () => {
+    setUpdating(true);
 
+    const { data: sessionData } = await supabase.auth.getSession();
+    const userId = sessionData?.session?.user?.id;
+
+    if (!userId) return;
+
+    const { error } = await supabase
+      .from("profiles")
+      .upsert({
+        id: userId, // clé primaire liée à Supabase Auth
+        first_name: firstName,
+        last_name: lastName,
+      })
+      .eq("id", userId);
+
+    if (error) {
+      console.error("Erreur mise à jour profil :", error);
+      alert("Impossible de mettre à jour le profil.");
+    } else {
+      setUserName(firstName); // met à jour le prénom affiché
+      alert("Profil mis à jour !");
+    }
+
+    setUpdating(false);
+  };
+
+  if (loading) return <p className="p-8">Chargement...</p>;
 
   return (
     <>
@@ -55,37 +84,71 @@ if (loading) return <p className="p-8">Chargement...</p>;
         Vous êtes connecté à l’espace admin. Gérez vos informations et la
         sécurité de votre compte.
       </p>
+<div className="flex flex-col md:flex-row gap-6">
+  {/* 🧍 Carte Profil */}
+  <div className="card w-full md:w-1/2 bg-base-100 shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+    <div className="card-body">
+      <h2 className="card-title">Profil</h2>
+      <p className="text-gray-500 text-sm mb-4">Informations personnelles</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* 🧍 Carte Profil */}
-        <div className="bg-white rounded-xl shadow p-6 space-y-6">
-          {/* Infos */}
-          <div>
-            <h2 className="text-xl font-semibold">Profil</h2>
-            <p className="text-gray-500 text-sm">Informations personnelles</p>
-
-            <div className="mt-4">
-              <p className="text-sm text-gray-600">Prénom</p>
-              <p className="font-medium">{userName}</p>
-            </div>
-          </div>
-
-          {/* Séparateur */}
-          <div className="border-t pt-4" />
-
-          {/* 🔐 Sécurité */}
-          <div>
-            <h3 className="font-semibold text-lg">Sécurité</h3>
-            <p className="text-sm text-gray-500 mb-4">
-              Modifier ou réinitialiser votre mot de passe
-            </p>
-
-            <ResetPassword />
-          </div>
+      <div className="space-y-4">
+        <div>
+          <label className="label">
+            <span className="label-text">Prénom</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Votre prénom"
+            className="input input-bordered w-full"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
         </div>
-       
+
+        <div>
+          <label className="label">
+            <span className="label-text">Nom</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Votre nom"
+            className="input input-bordered w-full"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </div>
+
+        <button
+          className="btn btn-primary w-full mt-2"
+          onClick={handleUpdateProfile}
+          disabled={updating}
+        >
+          {updating ? "Mise à jour..." : "Mettre à jour"}
+        </button>
       </div>
+    </div>
+  </div>
+
+  {/* 🔐 Carte Sécurité */}
+  <div className="card w-full md:w-1/2 bg-base-100 shadow-xl border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+    <div className="card-body">
+      <h2 className="card-title">Sécurité</h2>
+      <p className="text-gray-500 text-sm mb-4">
+        Modifier ou réinitialiser votre mot de passe
+      </p>
+
+   
+      
+       
+        <div className="">
+          <ResetPassword />
+        </div>
+  
+    </div>
+  </div>
+</div>
+
+    
     </>
   );
-
 }

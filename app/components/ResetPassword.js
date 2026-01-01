@@ -32,38 +32,41 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow p-6 max-w-sm w-full">
-      <h3 className="font-semibold text-lg mb-2">Mot de passe</h3>
-      <p className="text-sm text-gray-500 mb-4">
-        Un lien de réinitialisation sera envoyé par email.
-      </p>
+    <div className="card bg-white rounded-xl shadow p-6 w-full max-w-md">
+     
+    
 
       {/* FORMULAIRE */}
       {status !== "success" && (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <input
-            type="email"
-            placeholder="Adresse email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            disabled={status === "loading"}
-            className="border rounded px-3 py-2 focus:outline-none focus:ring"
-          />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+             <p className="text-sm text-gray-500 mb-4">
+        Un lien de réinitialisation sera envoyé par email.
+      </p>
+          <div>
+          
+            <input
+              type="email"
+              placeholder="Entrez votre email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={status === "loading"}
+              className="input input-bordered w-full"
+            />
+          </div>
 
           <button
             type="submit"
             disabled={status === "loading"}
-            className={`rounded py-2 text-white transition ${
-              status === "loading"
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700"
+            className={`btn btn-primary w-full ${
+              status === "loading" ? "btn-disabled" : ""
             }`}
           >
             {status === "loading"
               ? "Envoi en cours..."
               : "Réinitialiser le mot de passe"}
           </button>
+       
         </form>
       )}
 
@@ -76,7 +79,7 @@ export default function ForgotPassword() {
         >
           {message}
         </p>
-      )}
+      )}   
     </div>
   );
 }
