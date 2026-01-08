@@ -12,7 +12,7 @@ const missions = [
     title: "Lien social",
     text: "Contribuer au renforcement du lien social et de la citoyenneté.",
     img: "/assets/lien.jpg",
-    newLabel: "nouveau (example)",
+    newLabel: "",
   },
   {
     title: "Formation & Culture",
@@ -44,7 +44,7 @@ function MissionCard({ title, text, img, newLabel }) {
       <div className="card-body flex flex-col flex-grow">
         <h2 className="card-title">{title}</h2>
 
-        {newLabel && <div className="badge badge-secondary">{newLabel}</div>}
+        {/* {newLabel && <div className="badge badge-secondary">nouveau</div>} */}
 
         <p className="flex-grow">{text}</p>
       </div>

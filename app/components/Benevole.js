@@ -6,7 +6,7 @@ const data = [
     icon: "👥",
     color: "bg-primary",
     title: " Adhérents",
-    number: 250,
+    number: 350,
     subtitle: "Chaque année, d'une soixantaine de nationalités différentes",
     description:
       "Le CAAA fait partie des associations qui ont créé l’UNION DIACONALE DU VAR.",
@@ -15,7 +15,7 @@ const data = [
     icon: "🤝",
     color: "bg-secondary",
     title: " Bénévoles",
-    number: 40,
+    number: 50,
     subtitle: "Assurent le suivi et l’enseignement des adhérents",
     description:
       "Nous valorisons l’engagement, la diversité et le partage culturel et éducatif.",

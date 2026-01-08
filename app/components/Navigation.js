@@ -31,11 +31,11 @@ export default function Navbar() {
   const navLinks = [
     { label: "Accueil", to: "/" },
     { label: "Activités", to: "/activities" },
-    { label: "Blog", to: "/blog" },
-    { label: "Actualités", to: "/actualite" },
+    { label: "Articles", to: "/blog" },
+    // { label: "Actualités", to: "/actualite" },
     { label: "Partenaires", to: "/partenaires" },
-    { label: "Les talents", to: "/talents" },
-    { label: "Espace bénévoles", to: isLogged ? "/admin" : "/login" },
+    // { label: "Les talents", to: "/talents" },
+    { label: "", to: isLogged ? "/admin" : "/login" },
   ];
 
   return (

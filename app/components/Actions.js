@@ -14,7 +14,7 @@ export default function Actions() {
   const actions = [
     {
       title: "Pour les adultes",
-      text: "Insertion principalement linguistique, culturelle et numérique.",
+      text: "Insertion principalement linguistique et culturelle ",
       bg: "bg-primary",
       image: "/assets/adulte.webp",
     },
@@ -23,7 +23,7 @@ export default function Actions() {
     },
     {
       title: "Pour les enfants",
-      text: "Accompagnement à la scolarité et activités éducatives.",
+      text: "Accompagnement à la scolarité .",
       bg: "bg-accent",
       image: "/assets/enfants.webp",
     },
