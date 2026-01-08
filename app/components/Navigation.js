@@ -32,7 +32,7 @@ export default function Navbar() {
     { label: "Accueil", to: "/" },
     { label: "Activités", to: "/activities" },
     { label: "Articles", to: "/blog" },
-    // { label: "Actualités", to: "/actualite" },
+    { label: "Actualités", to: "/actualite" },
     { label: "Partenaires", to: "/partenaires" },
     // { label: "Les talents", to: "/talents" },
     { label: "", to: isLogged ? "/admin" : "/login" },
