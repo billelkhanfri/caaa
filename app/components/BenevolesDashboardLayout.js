@@ -17,7 +17,7 @@ export default function BenevolesDashboardLayout({ children }) {
 
   return (
     <>
-      <aside className="w-64 bg-secondary h-screen text-white flex flex-col justify-between">
+      <aside className="w-64 bg-black h-screen text-white flex flex-col justify-between">
         <div>
           <nav className="p-4 flex flex-col gap-2">
             <Link

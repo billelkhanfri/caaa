@@ -16,7 +16,7 @@ export default function Actions() {
       title: "Pour les adultes",
       text: "Insertion principalement linguistique et culturelle ",
       bg: "bg-primary",
-      image: "/assets/adulte.webp",
+      image: "/assets/formation.webp",
     },
     {
       image: "/assets/chance.webp",
