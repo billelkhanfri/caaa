@@ -1,13 +1,13 @@
 import Image from "next/image";
 
 const partenaires = [
-  { name: "Partenaire 1", logo: "/assets/partenaires/p1.avif" },
+  { name: "Partenaire 1", logo: "/assets/partenaires/p1.jpeg" },
   { name: "Partenaire 2", logo: "/assets/partenaires/p2.avif" },
   { name: "Partenaire 3", logo: "/assets/partenaires/p3.avif" },
-  { name: "Partenaire 4", logo: "/assets/partenaires/p4.avif" },
+  // { name: "Partenaire 4", logo: "/assets/partenaires/p4.avif" },
   { name: "Partenaire 5", logo: "/assets/partenaires/p5.avif" },
-  { name: "Partenaire 6", logo: "/assets/partenaires/p7.avif" },
-  { name: "Partenaire 7", logo: "/assets/partenaires/p6.avif" },
+  // { name: "Partenaire 6", logo: "/assets/partenaires/p7.avif" },
+  // { name: "Partenaire 7", logo: "/assets/partenaires/p6.avif" },
 ];
 
 export default function PartenairesPage() {
