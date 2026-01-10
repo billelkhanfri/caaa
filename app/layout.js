@@ -33,8 +33,14 @@ export default async function RootLayout({ children }) {
            
          
           {children}
+       
           </LayoutClient>
+          
 
+
+     <header className=" max-w-7xl w-full mx-auto">
+      <VisitsCounter></VisitsCounter>
+        </header>
         <Footer />
       </body>
     </html>

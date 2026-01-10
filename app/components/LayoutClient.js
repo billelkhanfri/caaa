@@ -69,7 +69,7 @@ export default function LayoutClient({ children, events }) {
          
         </>
       )}
-       <VisitsCounter />
+     
     </>
   );
 }
