@@ -5,7 +5,7 @@ import LayoutClient from "./components/LayoutClient";
 import { createSupabaseServer } from "./lib/supabase/server";
 import LayoutContent from "./components/LayoutContent";
 
-
+import VisitsCounter from "./components/VisitsCounter";
 export const metadata = {
   title: "CAAA — coeur de ville - Toulon",
   description:
@@ -25,8 +25,12 @@ export default async function RootLayout({ children }) {
         <header className="border-b border-gray-200 max-w-7xl w-full mx-auto">
           <Navbar />
         </header>
-<LayoutContent></LayoutContent>
+<LayoutContent>
+      
+</LayoutContent>
         <LayoutClient actualites={actualites ?? []}>
+          
+           
          
           {children}
           </LayoutClient>

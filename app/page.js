@@ -6,6 +6,7 @@ import Actions from "./components/Actions";
 import Benevole from "./components/Benevole";
 import LayoutContent from "./components/LayoutContent";
 import HeroVideo from "./components/HeroVideo";
+import VisitsCounter from "./components/VisitsCounter";
 export default async function Home() {
 
 
@@ -20,6 +21,7 @@ export default async function Home() {
       <Actions></Actions>
       {/* Adhérents & bénévoles */}
       <Benevole></Benevole>
+ 
      
     </main>
   );

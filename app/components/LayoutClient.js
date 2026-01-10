@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Sidebar from "./SidebarActualite";
 import { IoChevronForward } from "react-icons/io5";
 import { CgClose } from "react-icons/cg";
+import VisitsCounter from "./VisitsCounter";
 
 export default function LayoutClient({ children, events }) {
   const pathname = usePathname();
@@ -65,8 +66,10 @@ export default function LayoutClient({ children, events }) {
 
             <Sidebar events={events} />
           </aside>
+         
         </>
       )}
+       <VisitsCounter />
     </>
   );
 }
