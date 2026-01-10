@@ -6,9 +6,13 @@ export default async function AdminPostsPage() {
 
   const { data: posts, error } = await supabase
     .from("posts")
-    .select(
-      "id, title, excerpt, content, main_image, author, published_at, slug"
+    .select(`
+    *,
+    profiles!posts_author_fkey (
+      first_name,
+      last_name
     )
+  `)
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -76,7 +80,7 @@ export default async function AdminPostsPage() {
                 {/* AUTEUR */}
                 <td>
                   <span className="badge badge-outline badge-info">
-                    {post.author}
+                    {post.profiles.first_name[0]}.{post.profiles.last_name}
                   </span>
                 </td>
 

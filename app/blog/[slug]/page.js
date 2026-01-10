@@ -10,12 +10,22 @@ console.log("slug", slug)
 
   const supabase = await createSupabaseServer();
 
-  const { data: post, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("slug", slug.toLowerCase())
-    .single();
-console.log(post)
+const { data: post, error } = await supabase
+  .from("posts")
+  .select(`
+    *,
+    profiles!posts_author_fkey (
+      first_name,
+      last_name
+    )
+  `)
+  .eq("slug", slug.toLowerCase())
+  .single();
+
+
+
+
+
   if (error || !post) notFound();
 
   const isVideo = (url = "") => /\.(mp4|webm|ogg)$/i.test(url);
@@ -60,7 +70,7 @@ console.log(post)
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
 
         <div className="text-sm text-gray-400 mb-8">
-          {post.author} • {formattedDate}
+          {post.profiles?.first_name} {post.profiles?.last_name} • {formattedDate}
         </div>
 
         <div className="prose prose-lg max-w-none">{post.content}</div>
