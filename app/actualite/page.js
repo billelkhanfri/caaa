@@ -9,47 +9,12 @@ export default async function ActualitesData() {
     .from("actualites")
     .select("*");
 
-  const mockActualites = [
-    {
-      id: 1,
-      slug: "atelier-jeunesse",
-      title: "Atelier jeunesse : initiation au numérique",
-      category: "Éducation",
-      date: "2025-01-12",
-      image: {
-        url: "https://picsum.photos/600/400?random=1",
-        alt: "Atelier jeunesse",
-      },
-    },
-    {
-      id: 2,
-      slug: "solidarite-hiver",
-      title: "Campagne de solidarité hivernale",
-      category: "Solidarité",
-      date: "2025-01-05",
-      image: {
-        url: "https://picsum.photos/600/400?random=2",
-        alt: "Solidarité hiver",
-      },
-    },
-    {
-      id: 3,
-      slug: "sortie-culturelle",
-      title: "Sortie culturelle au musée",
-      category: "Culture",
-      date: "2024-12-20",
-      image: {
-        url: "https://picsum.photos/600/400?random=3",
-        alt: "Sortie culturelle",
-      },
-    },
-  ];
-
+ 
   if (error) {
     return <div>Erreur chargement actualités</div>;
   }
 
-  const data = actualites?.length > 1 ? actualites : mockActualites;
+  const data =actualites 
   const latestImages = data.filter((a) => a.image?.url).slice(0, 4);
 
   return (

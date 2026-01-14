@@ -12,14 +12,13 @@ console.log(slug)
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/actualites/${slug}`,
     { cache: "no-store" }
   );
-
   if (!res.ok) {
     if (res.status === 404) notFound();
     throw new Error("Erreur lors du chargement de l’actualité");
   }
 
   const actualite = await res.json();
-
+  console.log(actualite)
   if (!actualite) notFound();
 
   // 🗓️ date
