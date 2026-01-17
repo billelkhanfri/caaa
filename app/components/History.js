@@ -21,12 +21,13 @@ export default function History() {
           {historyTexts.map((text, i) => (
             <div key={i} className="flex items-start gap-4">
               <div className="flex-shrink-0 w-4 h-4 mt-2 bg-primary rounded-full" />
-              <p className="text-lg font-light leading-relaxed text-gray-700">
+              <p className="text-lg font-light leading-relaxed  text-base-content/70">
                 {text}
               </p>
             </div>
           ))}
         </div>
+       
 
         {/* Image à droite */}
         <div className="lg:w-1/2 flex justify-center lg:justify-end">

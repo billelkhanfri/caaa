@@ -18,26 +18,26 @@ export default function OrganisationSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
           {/* Locaux */}
-          <div className="card bg-base-100 shadow-md">
+          <div className="card bg-base-100 shadow-md rounded-lg">
             <div className="card-body text-center">
               <div className="text-4xl mb-4">🏢</div>
               <h3 className="card-title justify-center">
                 Nos locaux
               </h3>
-              <p className="text-sm text-base-content/70">
+              <p className="text-md text-base-content/70">
                 Des locaux loués situés en centre-ville, accessibles au public.
               </p>
             </div>
           </div>
 
           {/* Équipe */}
-          <div className="card bg-base-100 shadow-md">
+          <div className="card bg-base-100 shadow-md rounded-lg">
             <div className="card-body text-center">
               <div className="text-4xl mb-4">👥</div>
               <h3 className="card-title justify-center">
                 Notre équipe
               </h3>
-              <p className="text-sm text-base-content/70">
+              <p className="text-md text-base-content/70">
                 Deux salariés, dont une personne disposant de toutes les
                 qualifications FLE.
               </p>
@@ -45,13 +45,13 @@ export default function OrganisationSection() {
           </div>
 
           {/* Financement */}
-          <div className="card bg-base-100 shadow-md">
+          <div className="card bg-base-100 shadow-md rounded-lg">
             <div className="card-body text-center">
               <div className="text-4xl mb-4">🏛️</div>
               <h3 className="card-title justify-center">
                 Financement
               </h3>
-              <p className="text-sm text-base-content/70">
+              <p className="text-md text-base-content/70">
                 Notre budget repose principalement sur des subventions publiques
                 (État, Ville de Toulon, Département).
               </p>
@@ -59,13 +59,13 @@ export default function OrganisationSection() {
           </div>
 
           {/* Dons */}
-          <div className="card bg-base-100 shadow-md border border-primary/20">
+          <div className="card bg-base-100 shadow-md border border-primary/20 rounded-lg">
             <div className="card-body text-center">
               <div className="text-4xl mb-4">❤️</div>
               <h3 className="card-title justify-center">
                 Soutenir nos actions
               </h3>
-              <p className="text-sm text-base-content/70 mb-4">
+              <p className="text-md text-base-content/70 mb-4">
                 Depuis 2025, nous faisons appel à la générosité du public.
                 Les dons ouvrent droit à des avantages fiscaux.
               </p>

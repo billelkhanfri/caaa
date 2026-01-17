@@ -46,7 +46,9 @@ function MissionCard({ title, text, img, newLabel }) {
 
         {/* {newLabel && <div className="badge badge-secondary">nouveau</div>} */}
 
-        <p className="flex-grow">{text}</p>
+    
+                      <p className="text-md text-base-content/70 mb-4">{text}</p>
+
       </div>
     </div>
   );

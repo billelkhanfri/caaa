@@ -56,7 +56,7 @@ export default function Benevole() {
               </div>
             </div>
 
-            <p className="text-gray-600 text-base sm:text-lg mt-4">
+            <p className=" text-base-content/70 sm:text-md mt-4">
               {item.subtitle}
             </p>
 
