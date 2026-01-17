@@ -62,7 +62,7 @@ today.setHours(0, 0, 0, 0);
                 <div
                   className={`
                     flex flex-col items-center justify-center
-                    w-12 h-12 font-bold rounded-lg
+                    w-12 h-12 font-bold rounded-lg p-6
                     ${isPast
                       ? "bg-gray-300 text-gray-600"
                       : "bg-warning text-black"}
@@ -79,12 +79,12 @@ today.setHours(0, 0, 0, 0);
                     {event.title}
                   </span>
                 ) : (
-                  <Link
-                    href={`/evenement/${event.slug}`}
-                    className="text-sm font-medium hover:underline line-clamp-2"
+                  <span
+                    
+                    className="text-sm font-medium  line-clamp-4"
                   >
                     {event.title}
-                  </Link>
+                  </span>
                 )}
               </li>
             );

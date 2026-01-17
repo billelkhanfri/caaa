@@ -5,8 +5,8 @@ const data = [
   {
     icon: "👥",
     color: "bg-primary",
-    title: " Adhérents",
-    number: 350,
+    title: " Apprenants",
+    number: 500,
     subtitle: "Chaque année, d'une soixantaine de nationalités différentes",
     description:
       "Le CAAA fait partie des associations qui ont créé l’UNION DIACONALE DU VAR.",
@@ -16,7 +16,7 @@ const data = [
     color: "bg-secondary",
     title: " Bénévoles",
     number: 50,
-    subtitle: "Assurent le suivi et l’enseignement des adhérents",
+    subtitle: "Assurent le suivi et l’enseignement des Apprenants",
     description:
       "Nous valorisons l’engagement, la diversité et le partage culturel et éducatif.",
   },
@@ -30,7 +30,7 @@ export default function Benevole() {
   return (
     <section className="py-20 px-6  bg-gray-50">
       <h2 className="text-4xl font-bold text-center mb-12 text-primary">
-        Adhérents & Bénévoles
+        Apprenants & Bénévoles
       </h2>
 
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 max-w-6xl mx-auto">
@@ -44,7 +44,7 @@ export default function Benevole() {
               <div>
                 <div className="text-gray-400 text-sm uppercase">{month}</div>
                 <div className={`text-2xl sm:text-3xl font-bold text-primary`}>
-                  <CountUpClient number={item.number} />
+                 + <CountUpClient number={item.number} />
                   {item.title}
                 </div>
                 <div className="text-gray-400 text-sm">{year}</div>

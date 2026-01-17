@@ -4,9 +4,8 @@ import History from "./components/History";
 import Missions from "./components/Missions";
 import Actions from "./components/Actions";
 import Benevole from "./components/Benevole";
-import LayoutContent from "./components/LayoutContent";
-import HeroVideo from "./components/HeroVideo";
-import VisitsCounter from "./components/VisitsCounter";
+
+import OrganisationSection from "./components/Organisation";
 export default async function Home() {
 
 
@@ -19,7 +18,7 @@ export default async function Home() {
       <History></History>
       <Missions></Missions>
       <Actions></Actions>
-      {/* Adhérents & bénévoles */}
+      <OrganisationSection></OrganisationSection>
       <Benevole></Benevole>
  
      
