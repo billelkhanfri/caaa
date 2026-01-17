@@ -7,6 +7,7 @@ const data = [
     color: "bg-primary",
     title: " Apprenants",
     number: 500,
+    perYear: true,
     subtitle: "Chaque année, d'une soixantaine de nationalités différentes",
     description:
       "Le CAAA fait partie des associations qui ont créé l’UNION DIACONALE DU VAR.",
@@ -47,7 +48,11 @@ export default function Benevole() {
                  + <CountUpClient number={item.number} />
                   {item.title}
                 </div>
-                <div className="text-gray-400 text-sm">{year}</div>
+               
+             {item.perYear && (
+  <div className="text-gray-400 text-sm">par an</div>
+)}
+
               </div>
             </div>
 

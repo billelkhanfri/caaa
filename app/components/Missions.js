@@ -20,12 +20,12 @@ const missions = [
     img: "/assets/formation.jpg",
     newLabel: "",
   },
-  {
-    title: "Accompagnement",
-    text: "Accompagner les familles dans leurs projets de vie.",
-    img: "/assets/accompagnement.jpg",
-    newLabel: "",
-  },
+  // {
+  //   title: "Accompagnement",
+  //   text: "Accompagner les familles dans leurs projets de vie.",
+  //   img: "/assets/accompagnement.jpg",
+  //   newLabel: "",
+  // },
 ];
 
 function MissionCard({ title, text, img, newLabel }) {
