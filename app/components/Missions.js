@@ -30,7 +30,7 @@ const missions = [
 
 function MissionCard({ title, text, img, newLabel }) {
   return (
-    <div className="card rounded-xl bg-base-100 w-full max-w-xs shadow-sm h-full flex flex-col">
+    <div className="card rounded-xl bg-base-100 w-full  shadow-sm h-full flex flex-col">
       <figure className="h-48 overflow-hidden">
         <Image
           src={img}
@@ -57,13 +57,13 @@ function MissionCard({ title, text, img, newLabel }) {
 
 export default function Missions() {
   return (
-    <section className="py-16 bg-base-200">
+    <section className="py-16  px-6 bg-base-200">
             <h2 className="text-4xl font-bold text-center mb-12 text-primary">
 
      Nos Missions</h2>
 
       {/* ⭐ Responsive container */}
-      <div className="container mx-auto px-6">
+      <div className=" mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
           {missions.map((m) => (
             <MissionCard key={m.title} {...m} />

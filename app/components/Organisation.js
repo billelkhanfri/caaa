@@ -1,7 +1,7 @@
 export default function OrganisationSection() {
   return (
-    <section  className="bg-base-200 py-16">
-      <div className="container mx-auto px-4">
+    <section  className="bg-base-200 py-16 px-6">
+      <div className="container mx-auto ">
 
         {/* Titre */}
         <div className="text-center max-w-2xl mx-auto mb-12">

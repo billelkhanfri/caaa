@@ -36,7 +36,7 @@ export default function VisitsCounter() {
 
 
   return (
-    <div className="flex justify-center items-center gap-6 bg-base-200 shadow-lg p-2 w-64 md:w-64 rounded-2xl hover:shadow-xl transition-shadow duration-300">
+    <div className="flex justify-center items-center gap-6 bg-warning shadow-lg p-2 w-64 md:w-64  hover:shadow-xl transition-shadow duration-300">
       <Users className="text-primary w-8 h-8" />
       <div className="flex flex-col text-center">
         <span className="text-gray-400 text-sm md:text-md">Visiteurs</span>

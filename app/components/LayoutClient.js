@@ -30,10 +30,10 @@ export default function LayoutClient({ children, events }) {
         </button>
       )}
 
-      <main className="flex flex-1 w-full max-w-7xl mx-auto">
+      <main className="flex flex-1 w-full max-w-7xl mx-auto gap-6">
         {/* SIDEBAR DESKTOP */}
         {showSidebar && (
-          <aside className="hidden lg:block w-64 border-r border-gray-200">
+    <aside className="bg-gradient-to-r from-blue-600 to-blue-400 p-3 w-64  shadow-lg sticky flex flex-col justify-between">
             <Sidebar actualites={events} />
           </aside>
         )}

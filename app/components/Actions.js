@@ -48,7 +48,7 @@ export default function Actions() {
                   alt="Illustration"
                   width={80}
                   height={60}
-                  className="rounded-3xl object-cover"
+                  className="rounded-lg object-cover"
                 />
               </div>
             );
@@ -71,7 +71,7 @@ export default function Actions() {
               >
                 {/* FACE AVANT */}
                 <div className="absolute inset-0 backface-hidden">
-                  <div className="card image-full h-full rounded-3xl shadow-sm">
+                  <div className="card image-full h-full rounded-lg shadow-sm">
                     <figure className="relative h-full">
                       <Image
                         src={action.image}
@@ -95,7 +95,7 @@ export default function Actions() {
                 {/* FACE ARRIÈRE */}
                 <div className="absolute inset-0 backface-hidden rotate-y-180">
                   <div
-                    className={`card ${action.bg} h-full rounded-3xl text-primary-content shadow-sm flex items-center justify-center p-6`}
+                    className={`card ${action.bg} h-full rounded-lg text-primary-content shadow-sm flex items-center justify-center p-6`}
                   >
                     <div className="text-center space-y-4">
                       <h3 className="text-xl font-bold">{action.title}</h3>

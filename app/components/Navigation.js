@@ -6,6 +6,7 @@ import { HeartHandshake } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
 import { usePathname } from "next/navigation";
+import { FiAlignCenter } from "react-icons/fi";
 
 
 import { supabaseClient } from "../lib/supabase/client";
@@ -45,7 +46,8 @@ export default function Navbar() {
         {/* Mobile dropdown */}
         <div className="dropdown lg:hidden">
           <button tabIndex={0} className="btn btn-ghost">
-            <CiMenuKebab size={30} className="text-[#0432F4]" />
+           <FiAlignCenter size={30} className="text-[#0432F4]" />
+
           </button>
 
         <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[100] mt-3 w-52 p-2 shadow">
