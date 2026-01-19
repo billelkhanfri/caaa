@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Sidebar from "./SidebarActualite";
 import { IoChevronForward } from "react-icons/io5";
 import { CgClose } from "react-icons/cg";
-import VisitsCounter from "./VisitsCounter";
 
 export default function LayoutClient({ children, events }) {
   const pathname = usePathname();
@@ -17,12 +16,17 @@ export default function LayoutClient({ children, events }) {
   const showSidebar = !hideSidebarPaths.some((path) =>
     pathname.startsWith(path)
   );
+useEffect(() => {
+  document.body.style.overflow = open ? "hidden" : "";
+}, [open]);
+
 
   return (
     <>
       {/* Bouton menu MOBILE */}
       {showSidebar && (
         <button
+        aria-label="Ouvrir le menu"
           onClick={() => setOpen(true)}
           className="lg:hidden fixed top-20 left-0 z-50 bg-warning text-primary p-3 rounded-r-xl shadow-lg"
         >
@@ -33,8 +37,8 @@ export default function LayoutClient({ children, events }) {
       <main className="flex flex-1 w-full max-w-7xl mx-auto gap-6">
         {/* SIDEBAR DESKTOP */}
         {showSidebar && (
-    <aside className="bg-gradient-to-r from-blue-600 to-blue-400 p-3 w-64  shadow-lg sticky flex flex-col justify-between">
-            <Sidebar actualites={events} />
+<aside className="hidden lg:block sticky top-24 bg-gradient-to-r from-blue-600 to-blue-400 p-3 w-64 shadow-lg flex flex-col justify-between">
+            <Sidebar events={events} />
           </aside>
         )}
 
