@@ -1,111 +1,108 @@
-// app/activites/page.js
-import React from "react";
-import Image from "next/image";
 
+
+import ScheduleTable from "../components/ScheduleTable";
 export default function Activites() {
   return (
-    <div className="container mx-auto px-4 py-12">
-   
-      <h1 className="text-4xl font-bold text-center mb-8 px-6 py-4 rounded-xl bg-primary/10 text-primary shadow-sm">
-         Nos Activités
-         </h1>
-      {/* Section Adultes */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6 text-primary">
-          Pour les adultes
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="card bg-base-100 shadow-xl overflow-hidden">
-            <Image
-              src="/assets/projet.avif"
-              alt="Cours de FLE"
-              width={600}
-              height={300}
-              className="object-cover w-full h-48"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">
-                Cours de FLE et alphabétisation
-              </h3>
-              <p className="mb-4">
-                Le projet consiste à proposer des cours d'alphabétisation ou de
-                Français Langue Étrangère. Chaque adhérent bénéficie au minimum
-                de 2 heures de cours 2 fois par semaine (4 heures au total).
-              </p>
-              <p className="font-semibold">Horaires :</p>
-              <ul className="list-disc list-inside">
-                <li>Lundi, mardi, mercredi et vendredi : 9h à 11h</li>
-                <li>Lundi, mardi, jeudi et vendredi : 14h à 16h</li>
-              </ul>
-            </div>
-          </div>
+    <div className="container mx-auto px-4 py-16 max-w-6xl">
 
-          <div className="card bg-base-100 shadow-xl overflow-hidden">
-            <Image
-              src="/assets/atelier.avif"
-              alt="Ateliers"
-              width={600}
-              height={300}
-              className="object-cover w-full h-48"
+    {/* HERO */}
+<div className="text-center mb-16">
+  <h2 className="badge badge-primary badge-xl mb-4">
+    Horaires et cours
+  </h2>
+
+
+
+  <p className="text-base-content/70 max-w-3xl mx-auto">
+    Informations sur les horaires d’ouverture, les cours de français
+    et l’accompagnement scolaire proposés par l’association.
+  </p>
+</div>
+
+      {/* ADULTES */}
+      <section className="mb-20">
+      <div className="text-center ">
+  <span className="badge badge-primary badge-outline mb-4 badge-xl p-4">
+   Adultes
+  </span>
+  </div>
+
+        <div className="card bg-base-100 shadow-lg border border-base-200">
+          <div className="card-body">
+            <h3 className="card-title text-xl">
+              Cours de FLE et alphabétisation
+            </h3>
+
+            <p className="text-base-content/70">
+              Cours de Français Langue Étrangère et d’alphabétisation.
+              Minimum 4 heures de cours par semaine.
+            </p>
+
+            <ScheduleTable
+              rows={[
+                { day: "Lundi", morning: "09h – 11h", afternoon: "14h – 16h" },
+                { day: "Mardi", morning: "09h – 11h", afternoon: "14h – 16h" },
+                { day: "Mercredi", morning: "09h – 11h" },
+                { day: "Jeudi", afternoon: "14h – 16h" },
+                { day: "Vendredi", morning: "09h – 11h", afternoon: "14h – 16h" },
+              ]}
             />
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">
-                Ateliers sociaux, culturels et numériques
-              </h3>
-              <p className="mb-4">
-                Des ateliers pour faciliter l'intégration sociale et
-                professionnelle, approfondir certains points, et aborder la
-                langue autrement.
-              </p>
-              <p className="font-semibold">Exemples :</p>
-              <ul className="list-disc list-inside">
-                <li>
-                  Ateliers numériques (recherche d'emploi, code de la route,
-                  bibliothèque, etc.)
-                </li>
-                <li>Sorties culturelles et récréatives autour de Toulon</li>
-                <li>Ateliers de création animés par des artistes locaux</li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Section Enfants */}
+      {/* ENFANTS */}
       <section>
-        <h2 className="text-2xl font-semibold mb-6 text-primary">
-          Pour les enfants
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="card bg-base-100 shadow-xl overflow-hidden">
-            <Image
-              src="/assets/activitéesEnfants.avif"
-              alt="Accompagnement à la scolarité"
-              width={600}
-              height={300}
-              className="object-cover w-full h-48"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">
-                Accompagnement à la scolarité
-              </h3>
-              <p className="mb-4">
-                Séances destinées aux enfants de primaire, collège et lycée.
-              </p>
-              <p className="font-semibold">Horaires :</p>
-              <ul className="list-disc list-inside">
-                <li>
-                  Élèves de primaire : mercredi 14h-15h15, samedi 9h30-10h45
-                </li>
-                <li>
-                  Élèves de collège : mercredi 14h-15h15, samedi 9h30-10h45
-                </li>
-                <li>Élèves de lycée : mercredi 14h-17h</li>
-              </ul>
+      
+             <div className="text-center ">
+  <span className="badge badge-primary badge-outline mb-4 badge-xl p-4">
+     Enfants et jeunes
+  </span>
+  </div>
+
+        <div className="card bg-base-100 shadow-lg border border-base-200">
+          <div className="card-body">
+            <h3 className="card-title text-xl">
+              Accompagnement à la scolarité
+            </h3>
+
+            <p className="text-base-content/70">
+              Soutien scolaire pour les élèves du primaire, collège et lycée.
+            </p>
+
+            <div className="overflow-x-auto mt-6">
+              <table className="table table-zebra w-full">
+                <thead>
+                  <tr>
+                    <th>Niveau</th>
+                    <th>Jour</th>
+                    <th>Horaires</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Primaire</td>
+                    <td>Mercredi / Samedi</td>
+                    <td>14h – 15h15 / 09h30 – 10h45</td>
+                  </tr>
+                  <tr>
+                    <td>Collège</td>
+                    <td>Mercredi / Samedi</td>
+                    <td>14h – 15h15 / 09h30 – 10h45</td>
+                  </tr>
+                  <tr>
+                    <td>Lycée</td>
+                    <td>Mercredi</td>
+                    <td>14h – 17h</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+
           </div>
         </div>
       </section>
+
     </div>
   );
 }

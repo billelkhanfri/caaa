@@ -44,13 +44,17 @@ const niveauxFLE = [
   "B2 – Avancé",
   "C1 – Perfectionnement",
 ];
+  "jusqu'à 3 cours de français de 2 heures par semaine + ateliers socio-culturels en complément "
+
 
 const ateliers = [
   "Atelier socio-professionnel (recherche d’emploi)",
   "Initiation au code de la route",
-  "Anglais professionnel",
-  "Cours spécifique pour MNA",
+  "Anglais professionnel (niveaux débutant et avancé)",
+
   "Atelier Scrabble",
+  "atelier d'écriture ",
+  "Ateliers théâtre (A1-A2 et B1-B2-C1)",
 ];
 
 const sorties = [
@@ -70,20 +74,41 @@ const sorties = [
 export default function NosActionsPage() {
   return (
     <main className="bg-base-100">
+{/* HERO */}
+<section className="py-16 px-6 text-center max-w-5xl mx-auto">
+  {/* Badge */}
+  <div className="mb-6">
+    <h2 className="badge badge-primary p-4 badge-xl">
+      Nos engagements
+    </h2>
+  </div>
 
-      {/* HERO */}
-      <section className="py-20 px-6 text-center max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6 px-6 py-4 rounded-2xl bg-primary/10 text-primary shadow-sm">
-          Nos actions
-        </h1>
-        <p className="text-lg text-base-content/70">
-          Le CAAA agit pour l’insertion linguistique, sociale et culturelle des
-          publics qu’il accompagne.
-        </p>
-      </section>
+
+
+  {/* Texte principal */}
+  <p className="text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto">
+    Le CAAA agit pour l’insertion linguistique, sociale et culturelle des publics
+    qu’il accompagne.
+  </p>
+
+  {/* Info complémentaire */}
+  <div className="mt-8 flex flex-wrap justify-center gap-3">
+    <span className="badge badge-secondary badge-lg">
+      Jusqu’à 3 cours / semaine
+    </span>
+    <span className="badge badge-secondary badge-lg">
+      Sessions de 2h
+    </span>
+    <span className="badge badge-secondary badge-lg">
+      Ateliers socio-culturels
+    </span>
+  </div>
+</section>
+
+
 
       {/* ACTIONS VISUELLES */}
-      <section className="px-6 py-16">
+      <section className="px-6 py-16 bg-base-200">
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {actionsPrincipales.map((action) => (
             <div
@@ -97,24 +122,25 @@ export default function NosActionsPage() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent" />
               </figure>
 
-              <div className="card-body absolute inset-0 flex flex-col justify-end p-6 text-white">
-                <h2 className="text-2xl font-bold mb-2">
-                  {action.title}
-                </h2>
-                <p className="text-sm opacity-90">
-                  {action.description}
-                </p>
-              </div>
+           <div className="card-body absolute inset-x-0 bottom-0 p-6 text-white bg-gradient-to-t from-black/70 to-transparent">
+  <h2 className="text-2xl font-bold mb-2">
+    {action.title}
+  </h2>
+  <p className="text-sm opacity-90">
+    {action.description}
+  </p>
+</div>
+
             </div>
           ))}
         </div>
       </section>
 
       {/* CHIFFRES CLÉS */}
-      <section className="px-6 py-16 bg-base-200">
+      {/* <section className="px-6 py-16 bg-base-200">
         <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
           {chiffresCles.map((item) => (
             <div
@@ -132,15 +158,18 @@ export default function NosActionsPage() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* COURS DE FRANÇAIS */}
       <section className="px-6 py-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-semibold text-primary mb-10 text-center">
+          <div className="flex justify-center mb-6">
+ <h2 className=" badge badge-outline badge-xl  badge-primary p-4 ">
             Cours de français & alphabétisation
           </h2>
 
+          </div>
+         
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {niveauxFLE.map((niveau) => (
               <div
@@ -184,9 +213,12 @@ export default function NosActionsPage() {
       {/* ATELIERS */}
       <section className="px-6 py-16 bg-base-200">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-semibold text-primary mb-10 text-center">
+        
+           <div className="flex justify-center mb-6">
+    <h2 className="badge badge-primary badge-outline badge-xl p-4 ">
             Ateliers complémentaires
-          </h2>
+    </h2>
+  </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {ateliers.map((atelier) => (
@@ -206,9 +238,13 @@ export default function NosActionsPage() {
       {/* SORTIES */}
       <section className="px-6 py-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-semibold text-primary mb-10 text-center">
+       
+                  
+           <div className="flex justify-center mb-6">
+    <h2 className="badge badge-primary badge-outline badge-xl p-4 ">
             Sorties culturelles & événements
-          </h2>
+    </h2>
+  </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {sorties.map((sortie) => (

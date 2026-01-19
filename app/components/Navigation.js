@@ -33,7 +33,7 @@ export default function Navbar() {
     { label: "Accueil", to: "/" },
          { label: "Nos Actions", to: "/actions" },
 
-    { label: "Activités", to: "/activities" },
+    { label: "Cours & horaires", to: "/activities" },
     { label: "Articles", to: "/blog" },
     { label: "Actualités", to: "/actualite" },
     { label: "Publics & partenaires", to: "/partenaires" },
