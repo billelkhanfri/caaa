@@ -5,7 +5,7 @@ import Image from "next/image";
 export default async function ActualitePage({ params }) {
   // ✅ params = Promise (Next 15 / App Router)
   const { slug } = await params;
-console.log(slug)
+
   if (!slug) notFound();
 
   const res = await fetch(

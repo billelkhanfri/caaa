@@ -5,15 +5,17 @@ export default async function AdminPostsPage() {
   const supabase = await createSupabaseServer();
 
   const { data: posts, error } = await supabase
-    .from("posts")
-    .select(`
-    *,
-    profiles!posts_author_fkey (
-      first_name,
-      last_name
-    )
-  `)
-    .order("created_at", { ascending: false });
+  .from("posts")
+.select(`
+  *,
+  profiles:author_id (
+    id,
+    first_name,
+    last_name
+  )
+`)
+
+  .order("created_at", { ascending: false });
 
   if (error) {
     throw new Error(error.message);

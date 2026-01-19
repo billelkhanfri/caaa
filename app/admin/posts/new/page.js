@@ -73,7 +73,11 @@ export default function NewPostPage() {
         alt: title,
         type: isVideo ? "video" : "image",
       };
-    }
+    } 
+    const {
+  data: { user }
+} = await supabase.auth.getUser();
+
 
     // 🔹 Insertion sécurisée
     const { error } = await supabase.from("posts").insert({
@@ -82,6 +86,7 @@ export default function NewPostPage() {
       excerpt,
       content,
       main_image: mainImage,
+        author_id: user.id
     });
 
     if (error) {

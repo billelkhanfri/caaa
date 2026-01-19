@@ -5,20 +5,21 @@ import { createSupabaseServer } from "../../lib/supabase/server";
 
 export default async function PostPage({ params }) {
   const { slug } = await params;
-console.log("slug", slug)
+
   if (!slug) notFound();
 
   const supabase = await createSupabaseServer();
 
 const { data: post, error } = await supabase
   .from("posts")
-  .select(`
-    *,
-    profiles!posts_author_fkey (
-      first_name,
-      last_name
-    )
-  `)
+.select(`
+  *,
+  profiles:author_id (
+    id,
+    first_name,
+    last_name
+  )
+`)
   .eq("slug", slug.toLowerCase())
   .single();
 
