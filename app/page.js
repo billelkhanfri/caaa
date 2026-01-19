@@ -17,7 +17,7 @@ export default async function Home() {
       {/* Notre histoire */}
       <History></History>
       <Missions></Missions>
-      <Actions></Actions>
+    
       <OrganisationSection></OrganisationSection>
       <Benevole></Benevole>
  

@@ -31,11 +31,12 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Accueil", to: "/" },
+         { label: "Nos Actions", to: "/actions" },
+
     { label: "Activités", to: "/activities" },
     { label: "Articles", to: "/blog" },
     { label: "Actualités", to: "/actualite" },
-    { label: "Partenaires", to: "/partenaires" },
-    // { label: "Les talents", to: "/talents" },
+    { label: "Publics & partenaires", to: "/partenaires" },
     { label: "", to: isLogged ? "/admin" : "/login" },
   ];
 
