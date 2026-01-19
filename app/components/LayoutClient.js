@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Sidebar from "./SidebarActualite";
 import { IoChevronForward } from "react-icons/io5";
 import { CgClose } from "react-icons/cg";
+import VisitsCounter from "./VisitsCounter";
 
 export default function LayoutClient({ children, events }) {
   const pathname = usePathname();
@@ -37,9 +38,20 @@ useEffect(() => {
       <main className="flex flex-1 w-full max-w-7xl mx-auto gap-6">
         {/* SIDEBAR DESKTOP */}
         {showSidebar && (
-<aside className="hidden lg:block sticky top-24 bg-gradient-to-r from-blue-600 to-blue-400 p-3 w-64 shadow-lg flex flex-col justify-between">
-            <Sidebar events={events} />
-          </aside>
+          <> 
+<aside className="hidden lg:flex sticky top-24 min-h-[calc(100vh-6rem)] w-64 bg-gradient-to-r from-blue-600 to-blue-400 p-3 shadow-lg flex flex-col justify-between ">
+<div> <Sidebar events={events} /> </div>
+
+
+<div className="">
+  <VisitsCounter />
+</div>
+
+
+</aside>
+
+
+</>
         )}
 
         {/* CONTENU */}
@@ -69,8 +81,9 @@ useEffect(() => {
             </div>
 
             <Sidebar events={events} />
+<div className="absolute bottom-0">  <VisitsCounter></VisitsCounter></div>                     
+
           </aside>
-         
         </>
       )}
      
