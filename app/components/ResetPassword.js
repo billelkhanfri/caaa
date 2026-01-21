@@ -16,7 +16,7 @@ export default function ForgotPassword() {
     setMessage("");
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "https://caaa-theta.vercel.app/nouveau-mot-de-passe",
+      redirectTo: "https://caaa-toulon.vercel.app/nouveau-mot-de-passe",
     });
 
     if (error) {
