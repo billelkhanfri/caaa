@@ -1,6 +1,9 @@
 import { createSupabaseServer } from "../../../lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+
+import DeleteModal from "../../../components/DeleteModal";
+
 export default async function EditPostPage({ params }) {
   const { slug } = await params;
   const supabase = await createSupabaseServer();
@@ -86,11 +89,7 @@ export default async function EditPostPage({ params }) {
   async function deletePost(formData) {
     "use server";
 
-    const confirmDelete = formData.get("confirm");
-    if (confirmDelete !== "yes") {
-      // Annule si pas confirmé
-      return;
-    }
+   
 
     const supabase = await createSupabaseServer();
     await supabase.from("posts").delete().eq("id", post.id);
@@ -149,15 +148,8 @@ export default async function EditPostPage({ params }) {
       </form>
 
       {/* Formulaire Delete avec confirmation */}
-      <form
-        action={deletePost}
-      
-      >
-        <input type="hidden" name="confirm" value="yes" />
-        <button type="submit" className="btn btn-error w-full">
-          Supprimer définitivement
-        </button>
-      </form>
+      <DeleteModal action={deletePost} />
+   
     </div>
   );
 }

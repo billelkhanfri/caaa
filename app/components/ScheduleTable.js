@@ -2,7 +2,7 @@ export  default function ScheduleTable({ rows }) {
   return (
     <div className="overflow-x-auto mt-6">
       <table className="table table-zebra w-full">
-        <thead>
+        <thead className="bg-primary text-white">
           <tr>
             <th>Jour</th>
             <th>Matin</th>

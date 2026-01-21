@@ -1,4 +1,5 @@
 import { createSupabaseServer } from "../../../lib/supabase/server";
+import DeleteModal from "../../../components/DeleteModal";
 
 import Link from "next/link";
 import { redirect } from "next/navigation";export default async function EditEventPage({ params }) {
@@ -47,11 +48,7 @@ console.log("UPDATED:", data);
   async function deleteEvent(formData) {
     "use server";
 
-    const confirmDelete = formData.get("confirm");
-    if (confirmDelete !== "yes") {
-      // Annule si pas confirmé
-      return;
-    }
+   
 
     const supabase = await createSupabaseServer();
     await supabase.from("evenements").delete().eq("id", id);
@@ -94,15 +91,9 @@ console.log("UPDATED:", data);
       </form>
 
       {/* Formulaire Delete avec confirmation */}
-      <form
-        action={deleteEvent}
+              <DeleteModal action={deleteEvent} />
       
-      >
-        <input type="hidden" name="confirm" value="yes" />
-        <button type="submit" className="btn btn-error w-full">
-          Supprimer définitivement
-        </button>
-      </form>
+    
     </div>
     </section>
   );

@@ -1,6 +1,8 @@
 import { createSupabaseServer } from "../../../lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import DeleteModal from "../../../components/DeleteModal";
+
 export default async function EditActualitePage({ params }) {
   const { slug } = await params;
 
@@ -167,17 +169,10 @@ export default async function EditActualitePage({ params }) {
       </form>
 
       {/* DELETE */}
-      <form action={deleteActualite}>
-        <button
-          className="btn btn-error w-full"
-          // onClick={(e) => {
-          //   if (!confirm("Voulez-vous vraiment supprimer cette actualité ?"))
-          //     e.preventDefault();
-          // }}
-        >
-          Supprimer définitivement
-        </button>
-      </form>
+   
+        <DeleteModal action={deleteActualite} />
+
+     
     </div>
   );
 }

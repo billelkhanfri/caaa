@@ -7,11 +7,11 @@ export default function Activites() {
 
     {/* HERO */}
 <div className="text-center mb-16">
-  <h2 className="badge badge-primary badge-xl mb-4">
-    Horaires et cours
-  </h2>
+ 
 
-
+<h2 className="text-4xl font-bold text-center mb-8 px-6 py-4 rounded-xl bg-primary/10 text-primary shadow-sm">
+         Horaires et cours
+        </h2>
 
   <p className="text-base-content/70 max-w-3xl mx-auto">
     Informations sur les horaires d’ouverture, les cours de français
@@ -72,7 +72,7 @@ export default function Activites() {
 
             <div className="overflow-x-auto mt-6">
               <table className="table table-zebra w-full">
-                <thead>
+                <thead className="bg-primary text-white">
                   <tr>
                     <th>Niveau</th>
                     <th>Jour</th>

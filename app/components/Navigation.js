@@ -19,14 +19,26 @@ export default function Navbar() {
 
 
 
-  useEffect(() => {
-    const checkSession = async () => {
-      const { data } = await supabase.auth.getSession();
-      setIsLogged(!!data.session);
-      setLoading(false);
-    };
-    checkSession();
-  }, []);
+useEffect(() => {
+  const getSession = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    setIsLogged(!!session);
+    setLoading(false);
+  };
+
+  getSession();
+
+  const { data: listener } = supabase.auth.onAuthStateChange(
+    (_event, session) => {
+      setIsLogged(!!session);
+    }
+  );
+
+  return () => {
+    listener.subscription.unsubscribe();
+  };
+}, []);
+
   if (loading) return null; // évite le clignotement
 
   const navLinks = [
@@ -37,8 +49,8 @@ export default function Navbar() {
     { label: "Articles", to: "/blog" },
     { label: "Actualités", to: "/actualite" },
     { label: "Publics & partenaires", to: "/partenaires" },
-    { label: "", to: isLogged ? "/admin" : "/login" },
-  ];
+     isLogged && { label: "Admin", to: "/admin" },
+  ].filter(Boolean); 
 
   return (
     <header className="navbar  bg-base-100 shadow-sm px-4">

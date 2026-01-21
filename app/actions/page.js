@@ -78,9 +78,10 @@ export default function NosActionsPage() {
 <section className="py-16 px-6 text-center max-w-5xl mx-auto">
   {/* Badge */}
   <div className="mb-6">
-    <h2 className="badge badge-primary p-4 badge-xl">
-      Nos engagements
-    </h2>
+
+    <h2 className="text-4xl font-bold text-center mb-8 px-6 py-4 rounded-xl bg-primary/10 text-primary shadow-sm">
+          Nos engagements
+        </h2>
   </div>
 
 

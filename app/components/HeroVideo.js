@@ -33,7 +33,7 @@ export default function Hero() {
         <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center lg:justify-end">
           <div className="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-2xl">
             <video
-              src="https://avoxnypnpmblaitcgplp.supabase.co/storage/v1/object/public/video/dcc3502b-dba3-4f2f-804f-48a6d53bb000.MP4"
+              src="https://qzjzslfuodlejjwnebgh.supabase.co/storage/v1/object/public/video/dcc3502b-dba3-4f2f-804f-48a6d53bb000.MP4"
               controls
               autoPlay
               muted
