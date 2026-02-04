@@ -3,21 +3,22 @@ import Image from "next/image";
 
 const missions = [
   {
-    title: "Entraide & Intégration",
-    text: "Animer et gérer les initiatives qui favorisent l’entraide et l’intégration.",
+    title: "Former au français langue étrangère (FLE) et faciliter l’intégration",
+    text: "La maîtrise du FLE est indispensable pour l’intégration et notamment pour l’insertion professionnelle.",
     img: "/assets/entraides.jpg",
     newLabel: "",
   },
+
   {
+    title: "Formation & Culture",
+    text: "Favoriser la formation et le développement culturel des apprenants par des visites culturelles diverses dans l’agglomération de Toulon (musées…) et des ateliers culturels variés (théâtre…). Un soutien scolaire de jeunes est aussi organisé.",
+    img: "/assets/formation.jpg",
+    newLabel: "",
+  },
+    {
     title: "Lien social",
     text: "Contribuer au renforcement du lien social et de la citoyenneté.",
     img: "/assets/lien.jpg",
-    newLabel: "",
-  },
-  {
-    title: "Formation & Culture",
-    text: "Favoriser la formation et le développement culturel des enfants et des adultes.",
-    img: "/assets/formation.jpg",
     newLabel: "",
   },
   // {

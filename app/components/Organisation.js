@@ -15,8 +15,34 @@ export default function OrganisationSection() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+   {/* Équipe */}
+          <div className="card bg-base-100 shadow-md rounded-lg">
+            <div className="card-body text-center">
+              <div className="text-4xl mb-4">👥</div>
+              <h3 className="card-title justify-center">
+                Notre équipe
+              </h3>
+              <p className="text-md text-base-content/70">
+                Deux salariés, dont une personne disposant de toutes les
+                qualifications FLE.
+              </p>
+            </div>
+          </div>
+             {/* Bénevoles */}
+          <div className="card bg-base-100 shadow-md rounded-lg">
+            <div className="card-body text-center">
+             <div className="text-4xl mb-4">🫶</div>
 
+              <h3 className="card-title justify-center">
+         Nos bénévoles 
+              </h3>
+              <p className="text-md text-base-content/70">
+            CAAA a toujours bénéficié d’un grand nombre de bénévoles enseignants ou animateurs d’ateliers ; une formation ad hoc leur est proposée. En 2025 plus de 60 bénévoles ont contribué au CAAA 
+
+              </p>
+            </div>
+          </div>
           {/* Locaux */}
           <div className="card bg-base-100 shadow-md rounded-lg">
             <div className="card-body text-center">
@@ -30,19 +56,7 @@ export default function OrganisationSection() {
             </div>
           </div>
 
-          {/* Équipe */}
-          <div className="card bg-base-100 shadow-md rounded-lg">
-            <div className="card-body text-center">
-              <div className="text-4xl mb-4">👥</div>
-              <h3 className="card-title justify-center">
-                Notre équipe
-              </h3>
-              <p className="text-md text-base-content/70">
-                Deux salariés, dont une personne disposant de toutes les
-                qualifications FLE.
-              </p>
-            </div>
-          </div>
+       
 
           {/* Financement */}
           <div className="card bg-base-100 shadow-md rounded-lg">

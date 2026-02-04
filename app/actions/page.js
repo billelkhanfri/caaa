@@ -53,7 +53,7 @@ const ateliers = [
   "Anglais professionnel (niveaux débutant et avancé)",
 
   "Atelier Scrabble",
-  "atelier d'écriture ",
+  "Atelier d'écriture ",
   "Ateliers théâtre (A1-A2 et B1-B2-C1)",
 ];
 
