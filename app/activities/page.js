@@ -67,7 +67,7 @@ export default function Activites() {
             </h3>
 
             <p className="text-base-content/70">
-              Soutien scolaire pour les élèves du primaire, collège et lycée.
+              Soutien scolaire pour les élèves du primaire et collège.
             </p>
 
             <div className="overflow-x-auto mt-6">
@@ -90,11 +90,7 @@ export default function Activites() {
                     <td>Mercredi / Samedi</td>
                     <td>14h – 15h15 / 09h30 – 10h45</td>
                   </tr>
-                  <tr>
-                    <td>Lycée</td>
-                    <td>Mercredi</td>
-                    <td>14h – 17h</td>
-                  </tr>
+              
                 </tbody>
               </table>
             </div>
