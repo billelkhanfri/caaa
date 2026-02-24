@@ -53,7 +53,7 @@ useEffect(() => {
   ].filter(Boolean); 
 
   return (
-    <header className="navbar  bg-base-100 shadow-sm px-4">
+    <header className="navbar  bg-base-100  px-4">
       {/* LEFT : Logo + Menu Mobile */}
       <div className="navbar-start gap-4">
         {/* Mobile dropdown */}
