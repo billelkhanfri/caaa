@@ -4,16 +4,9 @@ import Image from "next/image";
    DATA
 ========================= */
 
-const partenairesFinanciers = [
-  { name: "Préfecture du Var", logo: "/assets/partenaires/prefecture.png" },
-  { name: "Ville de Toulon", logo: "/assets/partenaires/toulon.png" },
-  { name: "Conseil Départemental", logo: "/assets/partenaires/departement.png" },
-];
-
 const partenairesOperationnels = [
   { name: "Partenaire 1", logo: "/assets/partenaires/p1.jpeg" },
   { name: "Partenaire 2", logo: "/assets/partenaires/p2.avif" },
-  { name: "Partenaire 3", logo: "/assets/partenaires/p3.avif" },
   { name: "Partenaire 5", logo: "/assets/partenaires/p5.avif" },
 ];
 
@@ -47,11 +40,27 @@ const structures = [
   },
   {
     title: "Immigration",
-    items: ["CADA", "OFII", "SPADA COSI", "CIMADE", "Welcome","Sud Formation", "HUDA ADOMA"],
+    items: [
+      "CADA",
+      "OFII",
+      "SPADA COSI",
+      "CIMADE",
+      "Welcome",
+      "Sud Formation",
+      "HUDA ADOMA",
+    ],
   },
   {
     title: "Insertion professionnelle",
-    items: ["France Travail", "GRETA", "ESAT", "LADAPT", "ASPI","SIAO", "ADAPEI"],
+    items: [
+      "France Travail",
+      "GRETA",
+      "ESAT",
+      "LADAPT",
+      "ASPI",
+      "SIAO",
+      "ADAPEI",
+    ],
   },
   {
     title: "Département du Var",
@@ -62,53 +71,29 @@ const structures = [
       "Croix-Rouge",
       "Ariane Méditerranée",
       "UDAF",
-    "CHRS",
-  "FACE",
-"UTS",
-"CEDIS",
-"Maison des frères",
-"Conseil général"
-]
-    
+      "CHRS",
+      "FACE",
+      "UTS",
+      "CEDIS",
+      "Maison des frères",
+      "Conseil général",
+    ],
   },
-    {
-    title: "Ville  de Toulon",
+  {
+    title: "Ville de Toulon",
     items: [
-      "mairie",
+      "Mairie",
       "Toulon Habitat",
       "Femmes dans la cité",
       "Mouvement du Nid",
       "Café culture",
-      "UDV ",
-    "Évêché",
-  "FACE",
-  "+ support scolaire",
-  "+ conseil santé"
-    
-]
-    },
+      "Évêché",
+      "FACE",
+      "Support scolaire",
+      "Conseil santé",
+    ],
+  },
 ];
-
-
-/* =========================
-   COMPONENTS
-========================= */
-
-function LogoCard({ logo, name }) {
-  return (
-    <div className="card bg-base-100 border border-base-200 shadow-md hover:shadow-xl transition-all duration-300">
-      <div className="card-body flex items-center justify-center p-8">
-        <Image
-          src={logo}
-          alt={name}
-          width={120}
-          height={120}
-          className="object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition duration-300"
-        />
-      </div>
-    </div>
-  );
-}
 
 /* =========================
    PAGE
@@ -118,38 +103,53 @@ export default function PartenairesPage() {
   return (
     <main className="min-h-screen bg-base-100">
 
-      {/* HERO */}
-      <section className="py-16 px-6 text-center max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6 px-6 py-4 rounded-2xl bg-primary/10 text-primary shadow-sm">
-          Publics & partenaires
-        </h1>
+      {/* HERO : LÉGITIMITÉ */}
+      <section className="py-20 px-6 text-center max-w-4xl mx-auto space-y-6">
+          <div className="mb-6">
+
+    <h2 className="text-4xl font-bold text-center mb-8 px-6 py-4 rounded-xl bg-primary/10 text-primary shadow-sm">
+          Une action locale portée par un réseau solidaire
+        </h2>
+  </div>
+        
+
         <p className="text-lg text-base-content/70">
-          Le CAAA agit en réseau avec des acteurs institutionnels, sociaux et
-          associatifs pour accompagner durablement les publics accueillis.
+          Le CAAA agit au sein du groupement d’économie sociale et solidaire
         </p>
+
+        <a
+          href="https://www.udv-asso.fr/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex justify-center"
+        >
+          <Image
+            src="/logos/udv-4.png"
+            alt="Logo Union Diaconale du Var"
+            width={1000}
+            height={800}
+            className="h-50 w-auto hover:opacity-80 transition"
+          />
+        </a>
       </section>
 
       {/* PUBLICS */}
-      <section className="px-6 py-16">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-semibold text-primary mb-10 text-center">
-            Publics accompagnés
+      <section className="px-6 mb-20">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Nos publics accompagnés
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-8">
             {publics.map((p) => (
               <div
                 key={p.title}
-                className="card  rounded-lg bg-base-100 border border-base-200 shadow-sm hover:shadow-md transition"
+                className="rounded-2xl border border-base-200 shadow-md hover:shadow-xl transition p-6 bg-base-100"
               >
-                <div className="card-body">
-                  <h3 className="card-title text-primary text-lg">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-base-content/70">
-                    {p.description}
-                  </p>
-                </div>
+                <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
+                <p className="text-sm text-base-content/70">
+                  {p.description}
+                </p>
               </div>
             ))}
           </div>
@@ -157,45 +157,43 @@ export default function PartenairesPage() {
       </section>
 
       {/* STRUCTURES */}
-      <section className="px-6 py-16 bg-base-200">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-semibold text-primary mb-10 text-center">
-            Structures partenaires
+      <section className="px-6   ">
+        <div className="max-w-5xl mx-auto bg-base-200 rounded-2xl p-10">
+          
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Réseau de partenaires
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="space-y-10">
             {structures.map((s) => (
-              <div
-                key={s.title}
-                className="card  text-warning bg-secondary backdrop-blur border border-base-300 shadow-sm rounded-lg"
-              >
-                <div className="card-body">
-                  <h3 className="card-title text-white text-lg">
-                    {s.title}
-                  </h3>
-                  <ul className="text-sm text-white list-disc list-inside space-y-1">
-                    {s.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+              <div key={s.title} className="border-l-4 border-warning pl-6">
+                <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
+                <p className="text-sm text-base-content/70">
+                  {s.items.join(" • ")}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-
       {/* PARTENAIRES OPÉRATIONNELS */}
-      <section className="px-6 py-16 ">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-semibold text-primary mb-10 text-center">
+      <section className="px-6 py-20">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">
             Partenaires associatifs & opérationnels
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3  gap-10 place-items-center">
             {partenairesOperationnels.map((p) => (
-              <LogoCard key={p.name} {...p} />
+              <Image
+                key={p.name}
+                src={p.logo}
+                alt={p.name}
+                width={140}
+                height={140}
+                className="object-contain opacity-70 hover:opacity-100 grayscale hover:grayscale-0 transition"
+              />
             ))}
           </div>
         </div>

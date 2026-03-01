@@ -3,11 +3,40 @@
 import Image from "next/image";
 
 export default function History() {
-  const historyTexts = [
-    "Le CAAA-Coeur de Ville-UDV, association loi 1901, a été créé en juillet 1972 par des Sœurs Blanches pour soutenir les femmes du centre-ville de Toulon.",
-    "Pour répondre aux besoins d’un public en évolution, nos missions se sont orientées vers le soutien scolaire et le français langue étrangère, tout en valorisant les arts et la culture.",
-    "Aujourd’hui, nous continuons à accompagner les familles et à favoriser l’intégration culturelle et sociale de tous."
-  ];
+const historyTexts = [
+  "Le CAAA-Coeur de Ville-UDV, association loi 1901, a été créé en juillet 1972 par des Sœurs Blanches pour soutenir les femmes du centre-ville de Toulon.",
+
+  "Pour répondre aux besoins d’un public en évolution, nos missions se sont orientées vers le soutien scolaire et le français langue étrangère, tout en valorisant les arts et la culture.",
+
+ <>
+  Le CAAA-Coeur de Ville-UDV est une association constitutive du groupement d’économie sociale et solidaire{" "}
+  
+  <a
+    href="https://www.udv-asso.fr/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="font-semibold text-[#e5613e] border-b-2 border-[#e5613e] hover:opacity-80 transition"
+  >
+    Union Diaconale du Var
+  </a>
+
+  <a
+    href="https://www.udv-asso.fr/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block ml-3 align-middle"
+  >
+    <Image
+      src="/logos/udv.png"
+      alt="Logo UDV"
+      width={100}
+      height={100}
+      className="h-12 w-auto"
+    />
+  </a>
+</>,
+  "Aujourd’hui, nous continuons à accompagner les familles et à favoriser l’intégration culturelle et sociale de tous."
+];
 
   return (
     <section className="py-16 px-6  bg-base-100">
