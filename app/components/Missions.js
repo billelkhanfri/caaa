@@ -11,7 +11,7 @@ const missions = [
 
   {
     title: "Formation & Culture",
-    text: "Favoriser la formation et le développement culturel des apprenants par des visites culturelles diverses dans l’agglomération de Toulon (musées…) et des ateliers culturels variés (théâtre…). Un soutien scolaire de jeunes est aussi organisé.",
+    text: "Favoriser la formation et le développement culturel des apprenants grâce à l’organisation de visites culturelles dans l’agglomération de Toulon (musées, etc.) ainsi que d’ateliers culturels variés (théâtre, etc.). Un soutien scolaire destiné aux jeunes est également mis en place.",
     img: "/assets/formation.jpg",
     newLabel: "",
   },
