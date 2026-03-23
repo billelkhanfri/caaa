@@ -49,7 +49,6 @@ const niveauxFLE = [
 
 const ateliers = [
   "Atelier socio-professionnel (recherche d’emploi)",
-  "Initiation au code de la route",
   "Anglais professionnel (niveaux débutant et avancé)",
 
   "Atelier Scrabble",

@@ -43,7 +43,7 @@ export default function Activites() {
                 { day: "Lundi", morning: "09h – 11h", afternoon: "14h – 16h" },
                 { day: "Mardi", morning: "09h – 11h", afternoon: "14h – 16h" },
                 { day: "Mercredi", morning: "09h – 11h" },
-                { day: "Jeudi", afternoon: "14h – 16h" },
+                { day: "Jeudi", morning: "09h – 11h",afternoon: "14h – 16h" },
                 { day: "Vendredi", morning: "09h – 11h", afternoon: "14h – 16h" },
               ]}
             />
