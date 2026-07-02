@@ -5,13 +5,13 @@ const nextConfig = {
     turbopackFileSystemCacheForDev: true
   },
   serverActions: {
-    bodySizeLimit: "10mb", // ou la taille max souhaitée
+    bodySizeLimit: "100mb", // ou la taille max souhaitée
   },
   reactCompiler: true,
   reactStrictMode: true,
   experimental: {
     serverActions: {
-      bodySizeLimit: "20mb", // adjust as needed
+      bodySizeLimit: "100mb", // adjust as needed
     },
   },
   images: {
