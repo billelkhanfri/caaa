@@ -6,6 +6,8 @@ export async function POST(req) {
   const { data, error } = await supabase.from("posts").insert([
     {
       ...body,
+       author_id: user.id,
+
       author: "CAAA",
       slug: body.title.toLowerCase().replace(/\s+/g, "-"),
       published_at: new Date().toISOString(),
