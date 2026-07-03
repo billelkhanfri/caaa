@@ -10,26 +10,20 @@ export default async function PostPage({ params }) {
 
   const supabase = await createSupabaseServer();
 
-const { data: post, error } = await supabase
-  .from("posts")
-.select(`
-  *,
-  profiles:author_id (
-    id,
-    first_name,
-    last_name
-  )
-`)
-  .eq("slug", slug.toLowerCase())
-  .single();
-
-
-
-
+  const { data: post, error } = await supabase
+    .from("posts")
+    .select(`
+      *,
+      profiles:author_id (
+        id,
+        first_name,
+        last_name
+      )
+    `)
+    .eq("slug", slug.toLowerCase())
+    .single();
 
   if (error || !post) notFound();
-
-  const isVideo = (url = "") => /\.(mp4|webm|ogg)$/i.test(url);
 
   const formattedDate = new Intl.DateTimeFormat("fr-FR", {
     dateStyle: "long",
@@ -46,7 +40,7 @@ const { data: post, error } = await supabase
         <div className="relative h-72 md:h-96 rounded-3xl overflow-hidden mb-8">
           <figure className="relative h-full bg-gray-200 overflow-hidden">
             {post?.main_image?.url ? (
-              isVideo(post.main_image.url) ? (
+              post.main_image.type === "video" ? (
                 <video
                   src={post.main_image.url}
                   controls

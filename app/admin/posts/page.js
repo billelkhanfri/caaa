@@ -1,5 +1,6 @@
 import { createSupabaseServer } from "../../lib/supabase/server";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function AdminPostsPage() {
   const supabase = await createSupabaseServer();
@@ -65,18 +66,26 @@ export default async function AdminPostsPage() {
 
                 {/* IMAGE */}
                 <td>
-                  {post.main_image?.url ? (
-                    <div className="avatar">
-                      <div className="w-16 rounded-lg ring ring-primary/20">
-                        <img
-                          src={post.main_image.url}
-                          alt={post.main_image.alt || post.title}
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    <span className="opacity-40 text-sm">—</span>
-                  )}
+               {post?.main_image?.url ? (
+  post.main_image.type === "video" ? (
+    <video
+      src={post.main_image.url}
+      controls
+      className="w-full h-full object-cover"
+    />
+  ) : (
+    <Image
+      src={post.main_image.url}
+      alt={post.title}
+      fill
+      className="object-cover"
+    />
+  )
+) : (
+  <div className="flex items-center justify-center h-full text-gray-400 text-sm">
+    Aucun média
+  </div>
+)}
                 </td>
 
                 {/* AUTEUR */}

@@ -10,7 +10,6 @@ export default function BlogList({ posts = [] }) {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
-  const isVideo = (url = "") => /\.(mp4|webm|ogg)$/i.test(url);
 
   /* 🔍 FILTER BY SEARCH */
   const filteredPosts = useMemo(() => {
@@ -75,10 +74,12 @@ export default function BlogList({ posts = [] }) {
       {/* 📰 GRID */}
       <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {paginatedPosts.map((post) => {
-          const mediaUrl = post?.main_image?.url;
-          const title = post?.title ?? "Sans titre";
+      
           const excerpt = post?.excerpt ?? "";
           const slug = post?.slug ?? "";
+          const mediaUrl = post?.main_image?.url;
+const mediaType = post?.main_image?.type; // "image" ou "video"
+const title = post?.title ?? "Sans titre";
 
           return (
             <li key={slug}>
@@ -99,27 +100,27 @@ export default function BlogList({ posts = [] }) {
               >
                 {/* MEDIA */}
                 <div className="relative h-52 overflow-hidden">
-                  {mediaUrl ? (
-                    isVideo(mediaUrl) ? (
-                      <video
-                        src={mediaUrl}
-                        muted
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    ) : (
-                      <Image
-                        src={mediaUrl}
-                        alt={title}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    )
-                  ) : (
-                    <div className="flex items-center justify-center h-full text-gray-400 text-sm bg-gray-100">
-                      Aucun média
-                    </div>
-                  )}
+                {mediaUrl ? (
+  mediaType === "video" ? (
+    <video
+      src={mediaUrl}
+      muted
+      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+    />
+  ) : (
+    <Image
+      src={mediaUrl}
+      alt={title}
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      className="object-cover transition-transform duration-500 group-hover:scale-110"
+    />
+  )
+) : (
+  <div className="flex items-center justify-center h-full text-gray-400 text-sm bg-gray-100">
+    Aucun média
+  </div>
+)}
 
                   {/* OVERLAY */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />

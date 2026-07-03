@@ -4,8 +4,7 @@ export default function AcronymCAAA() {
 
       <div className="max-w-7xl mx-auto px-4 py-2">
 
-        <div className="flex flex-wrap justify-center items-center text-slate-700
-        text-sm md:text-base font-medium tracking-wide">
+        <div className="flex flex-wrap justify-center items-center text-slate-700 text-sm md:text-base font-medium tracking-wide">
 
           {/* Comité */}
           <div className="flex items-center px-2">

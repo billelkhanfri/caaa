@@ -23,6 +23,10 @@ const nextConfig = {
         hostname: "imgs.search.brave.com",
         pathname: "/**",
       },
+       {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
       {
         protocol: "https",
         hostname: "via.placeholder.com",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function PostForm({
   post,
@@ -10,40 +11,81 @@ export default function PostForm({
 }) {
   const router = useRouter();
   const isEdit = Boolean(post?.id);
+  const [uploading, setUploading] = useState(false);
+const [uploadError, setUploadError] = useState(null);
+const CLOUD_NAME = "qpawdcqy";
+const UPLOAD_PRESET = "Billel";
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+async function uploadToCloudinary(file) {
+  const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
 
-    const file = formData.get("file");
-    const mediaUrl = formData.get("media_url")?.toString().trim();
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", UPLOAD_PRESET);
 
-    // Nettoyage logique simple
-    const cleanData = new FormData();
+  const res = await fetch(url, {
+    method: "POST",
+    body: formData,
+  });
 
-    cleanData.append("title", formData.get("title"));
-    cleanData.append("excerpt", formData.get("excerpt"));
-    cleanData.append("content", formData.get("content"));
-
-    // On passe file + url, backend décide
-    if (file) cleanData.append("file", file);
-    if (mediaUrl) cleanData.append("media_url", mediaUrl);
-
-    if (isEdit) {
-      await updateAction(post.id, cleanData);
-    } else {
-      await createAction(cleanData);
-    }
-
-    router.push("/admin/posts");
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`Échec upload Cloudinary: ${errText}`);
   }
+
+  const data = await res.json();
+  // data.resource_type vaut "image" ou "video"
+  return { url: data.secure_url, type: data.resource_type };
+}
+
 
   async function handleDelete() {
     if (!confirm("Voulez-vous vraiment supprimer ce post ?")) return;
     await deleteAction(post.id);
     router.push("/admin/posts");
   }
+async function handleSubmit(event) {
+  event.preventDefault();
+  setUploadError(null);
 
+  const formData = new FormData(event.currentTarget);
+  const file = formData.get("file");
+  const mediaUrlInput = formData.get("media_url")?.toString().trim();
+
+  const cleanData = new FormData();
+  cleanData.append("title", formData.get("title"));
+  cleanData.append("excerpt", formData.get("excerpt"));
+  cleanData.append("content", formData.get("content"));
+
+  try {
+    // Cas 1 : un fichier a été choisi → upload direct vers Cloudinary
+    if (file && file.size > 0) {
+      setUploading(true);
+      const { url, type } = await uploadToCloudinary(file);
+      cleanData.append("media_url", url);
+      cleanData.append("media_type", type);
+    }
+    // Cas 2 : une URL a été saisie manuellement
+    else if (mediaUrlInput) {
+      cleanData.append("media_url", mediaUrlInput);
+      cleanData.append("media_type", "video");
+    }
+  } catch (err) {
+    setUploading(false);
+    setUploadError(err.message);
+    return; // on arrête ici, pas de submit vers la server action
+  }
+
+  setUploading(false);
+
+  if (isEdit) {
+    await updateAction(post.id, cleanData);
+  } else {
+    await createAction(cleanData);
+  }
+
+  router.push("/admin/posts");
+}
   return (
     <div className="max-w-3xl mx-auto space-y-6">
 
@@ -138,10 +180,22 @@ export default function PostForm({
           </p>
         </div>
 
-        {/* SUBMIT */}
-        <button type="submit" className="btn btn-primary w-full">
-          {isEdit ? "Enregistrer" : "Créer"}
-        </button>
+        {uploadError && (
+  <p className="text-sm text-error">{uploadError}</p>
+)}
+
+{/* SUBMIT */}
+<button
+  type="submit"
+  disabled={uploading}
+  className="btn btn-primary w-full"
+>
+  {uploading
+    ? "Upload en cours..."
+    : isEdit
+    ? "Enregistrer"
+    : "Créer"}
+</button>
       </form>
 
       {/* DELETE */}
